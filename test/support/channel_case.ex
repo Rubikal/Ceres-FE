@@ -25,13 +25,13 @@ defmodule CeresWeb.ChannelCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Ceres.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Ceres.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

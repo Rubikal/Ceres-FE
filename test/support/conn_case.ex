@@ -26,13 +26,13 @@ defmodule CeresWeb.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Ceres.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Ceres.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

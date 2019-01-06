@@ -11,7 +11,7 @@ defmodule Ceres.Application do
       # Start the Ecto repository
       supervisor(Ceres.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(CeresWeb.Endpoint, []),
+      supervisor(CeresWeb.Endpoint, [])
       # Start your own worker by calling: Ceres.Worker.start_link(arg1, arg2, arg3)
       # worker(Ceres.Worker, [arg1, arg2, arg3]),
     ]

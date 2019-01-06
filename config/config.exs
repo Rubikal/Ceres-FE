@@ -14,8 +14,7 @@ config :ceres, CeresWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "fz3rnWAChbm4Y90pGYqYDaiekzqvNSaXgs8uQFZJkL1A9nz2NgjL7mEGN9dyrb5q",
   render_errors: [view: CeresWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Ceres.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Ceres.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +23,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
