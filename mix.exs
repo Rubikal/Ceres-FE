@@ -39,7 +39,9 @@ defmodule Ceres.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ex_machina, "~> 2.2", only: :test}
+      {:ex_machina, "~> 2.2", only: :test},
+      {:bureaucrat, git: "https://github.com/api-hogs/bureaucrat", only: [:test, :dev]},
+      {:poison, "~> 3.0"}
     ]
   end
 
