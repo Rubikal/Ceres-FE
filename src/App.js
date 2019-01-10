@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import './App.scss';
 import ActiveOrder from './components/orders/ActiveOrder';
 import CreateOrder from './components/orders/CreateOrder';
 import Login from './components/users/Login';
@@ -8,7 +9,7 @@ class App extends Component {
   render() {
     return (
        <Router>
-        <div>
+        <div className="App">
           <nav>
             <ul>
               <li>
