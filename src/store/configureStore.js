@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
 import rootSaga from './sagas/index';
 
-export default function configureStore({ initialState = {}, environment }) {
+export default function configureStore({ environment }) {
     const reduxSagaMonitorOptions =
         environment !== 'production'
         && typeof window === 'object'
