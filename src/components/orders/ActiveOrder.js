@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import NoActiveOrder from './NoActiveOrder';
 
 export class ActiveOrder extends Component {
   static propTypes = {
@@ -10,7 +11,7 @@ export class ActiveOrder extends Component {
   render() {
     return (
       <div>
-        <span>Active Order 🥪</span>
+        <NoActiveOrder />
       </div>
     )
   }
