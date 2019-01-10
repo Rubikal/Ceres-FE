@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch
+} from "react-router-dom";
 import './App.scss';
-import ActiveOrder from './components/orders/ActiveOrder';
-import CreateOrder from './components/orders/CreateOrder';
-import Login from './components/users/Login';
+import routes from './router/routes';
+import FancyRoute from './router/FancyRoute';
+import Nav from './components/grid/Nav';
 
 class App extends Component {
   render() {
     return (
-       <Router>
+      <Router>
         <div className="App">
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Your active order</Link>
-              </li>
-              <li>
-                <Link to="/create-order/">Create new order</Link>
-              </li>
-              <li>
-                <Link to="/login/">Login</Link>
-              </li>
-            </ul>
-          </nav>
-
-          <Route path="/" exact component={ActiveOrder} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/create-order/" component={CreateOrder} />
+          <Nav />
+          <Switch>
+            {routes.map((route, i) =>
+              <FancyRoute key={i} {...route} />
+            )}
+          </Switch>
         </div>
       </Router>
     );
