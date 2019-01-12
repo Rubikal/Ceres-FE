@@ -21,8 +21,8 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <>
+            <Nav />
             <div className="App">
-              <Nav />
               <Switch>
                 {routes.map((route, i) =>
                   <FancyRoute key={i} {...route} />
