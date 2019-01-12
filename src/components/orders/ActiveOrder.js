@@ -22,7 +22,6 @@ const styles = theme => ({
 // the index page (active order/ no active order)
 export class ActiveOrder extends Component {
   static propTypes = {
-    prop: PropTypes,
     classes: PropTypes.object.isRequired,
   }
 
