@@ -1,10 +1,4 @@
-/*
-  Watches for the terms actions to be dispatched.
-  It helps modify the state.terms.
-*/
-
 import * as ordersActionTypes from '../action-types/orders';
-
 
 const initialState = {
   activeOrder: {
