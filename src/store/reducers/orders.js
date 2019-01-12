@@ -1,7 +1,8 @@
 import * as ordersActionTypes from '../action-types/orders';
 
 const initialState = {
-  activeOrder: {
+  activeOrders: [], // a list of all the active orders
+  activeOrder: { // the currently selected active order
     status: null
   },
 };
