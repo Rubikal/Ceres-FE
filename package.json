@@ -32,6 +32,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "redux-devtools": "^3.5.0"
+    "redux-devtools": "^3.5.0",
+    "redux-immutable-state-invariant": "^2.1.0"
   }
 }
