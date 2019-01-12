@@ -3,10 +3,13 @@
 */
 
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+
 import orders from './orders';
 
-const rootReducer = combineReducers({
-    orders
+const rootReducer = (history) => combineReducers({
+  router: connectRouter(history),
+  orders,
 });
 
 export default rootReducer;

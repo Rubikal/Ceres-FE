@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
   Switch
 } from "react-router-dom";
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import { ConnectedRouter } from 'connected-react-router';
+import configureStore, { history } from './store/configureStore';
 import './App.scss';
 import routes from './router/routes';
 import FancyRoute from './router/FancyRoute';
@@ -19,16 +19,18 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Nav />
-            <Switch>
-              {routes.map((route, i) =>
-                <FancyRoute key={i} {...route} />
-              )}
-            </Switch>
-          </div>
-        </Router>
+        <ConnectedRouter history={history}>
+          <>
+            <div className="App">
+              <Nav />
+              <Switch>
+                {routes.map((route, i) =>
+                  <FancyRoute key={i} {...route} />
+                )}
+              </Switch>
+            </div>
+          </>
+        </ConnectedRouter>
       </Provider>
     );
   }

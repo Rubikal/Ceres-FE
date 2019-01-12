@@ -1,7 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 import reducers from './reducers';
 import rootSaga from './sagas/index';
+
+export const history = createBrowserHistory();
 
 export default function configureStore({ environment }) {
     const reduxSagaMonitorOptions =
@@ -12,8 +16,10 @@ export default function configureStore({ environment }) {
             : {};
 
     const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
+    const connectedRouterMiddleware = routerMiddleware(history);
     const middlewares = [
         sagaMiddleware,
+        connectedRouterMiddleware,
         // When in dev mode, detects whether a mutation occurs in reducers and notifies via console.error
         ...(environment !== 'production'
                 // TODO try to get working as ES import for consistency
@@ -34,7 +40,7 @@ export default function configureStore({ environment }) {
         : compose;
 
     const store = createStore(
-        reducers,
+        reducers(history),
         composeEnhancers(...enhancers),
     );
 
