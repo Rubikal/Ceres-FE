@@ -9,7 +9,9 @@ import NoActiveOrder from './NoActiveOrder';
 
 const styles = theme => ({
   fab: {
-    margin: theme.spacing.unit,
+    position: 'absolute',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
   },
   linkStyles: {
     color: 'inherit',
@@ -28,12 +30,12 @@ export class ActiveOrder extends Component {
     const { classes } = this.props;
     return (
       <>
+        <NoActiveOrder />
         <Link to="/create-order/" className={classes.linkStyles}>
           <Fab color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
           </Fab>
         </Link>
-        <NoActiveOrder />
       </>
     )
   }
