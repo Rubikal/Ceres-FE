@@ -3,7 +3,7 @@ import {
   Switch
 } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter } from 'connected-react-router/immutable';
 import configureStore, { history } from './store/configureStore';
 import './App.scss';
 import routes from './router/routes';

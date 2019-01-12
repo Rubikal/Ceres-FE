@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
-import { routerMiddleware } from 'connected-react-router';
+import { routerMiddleware } from 'connected-react-router/immutable';
 import reducers from './reducers';
 import rootSaga from './sagas/index';
 

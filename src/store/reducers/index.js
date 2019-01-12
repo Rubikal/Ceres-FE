@@ -2,8 +2,8 @@
  Combines all the reducers in the app, and sets the names for the state children.
 */
 
-import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { combineReducers } from 'redux-immutable';
+import { connectRouter } from 'connected-react-router/immutable';
 
 import orders from './orders';
 
