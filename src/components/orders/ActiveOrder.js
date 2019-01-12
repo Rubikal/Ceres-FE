@@ -28,9 +28,11 @@ export class ActiveOrder extends Component {
     const { classes } = this.props;
     return (
       <>
-        <Fab color="primary" aria-label="Add" className={classes.fab}>
-          <Link to="/create-order/" className={classes.linkStyles}><AddIcon /></Link>
-        </Fab>
+        <Link to="/create-order/" className={classes.linkStyles}>
+          <Fab color="primary" aria-label="Add" className={classes.fab}>
+            <AddIcon />
+          </Fab>
+        </Link>
         <NoActiveOrder />
       </>
     )
