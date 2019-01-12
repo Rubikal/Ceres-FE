@@ -3,8 +3,8 @@ import {
   BrowserRouter as Router,
   Switch
 } from "react-router-dom";
-import { Provider } from 'redux';
-import { configureStore } from './store/configureStore';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 import './App.scss';
 import routes from './router/routes';
 import FancyRoute from './router/FancyRoute';
