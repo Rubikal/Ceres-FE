@@ -9,7 +9,7 @@ const validateForm = (values) => {
   
 	if (!item) {
 		errors.name = 'field "Item" can\'t be empty';
-	} else if (!numberAndLettersPattern.test(item)) {
+	} else if (!numberAndLettersPattern.test(item) && !stringPattern.test(item)) {
 		errors.name = 'field "Item" can have letters and numbers only';
 	}
 
