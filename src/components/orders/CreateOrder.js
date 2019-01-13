@@ -40,6 +40,8 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
 };
 
 const CreateOrderForm = ({ handleSubmit, errors, formHasErrors }) => (
+  <>
+  <h1>Create a new order</h1>
 	<form onSubmit={handleSubmit(validateForm)}>
 		<div className="register-form">
 			<Field
@@ -52,7 +54,8 @@ const CreateOrderForm = ({ handleSubmit, errors, formHasErrors }) => (
 				<div className="register-form__form-errors">{listFormErrors(errors)}</div>
 			}
 		</div>
-	</form>
+  </form>
+  </>
 );
 
 
