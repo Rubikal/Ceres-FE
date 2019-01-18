@@ -10,14 +10,14 @@ import orders from './orders';
 import orderForm from './orderForm';
 import users from './users';
 
-const rootReducer = (history) => combineReducers({
-  users: users,
+const rootReducer = history => combineReducers({
   router: connectRouter(history),
   form: reducer,
   orders: combineReducers({
     userOrders: orders,
     orderForm
   }),
+  users
 });
 
 export default rootReducer;

@@ -8,6 +8,7 @@ const initialState = Map({
 const users = (state = initialState, action) => {
   switch (action.type) {
     case usersActionTypes.UPDATE_LOGIN_STATE:
+      console.log('test', action.payload);
       return state.set('loginState', action.payload);
 
     default:

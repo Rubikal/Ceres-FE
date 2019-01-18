@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = {
   linkStyles: {
@@ -11,15 +11,15 @@ const styles = {
   }
 };
 
-export class RenderLoginState extends Component {
-  static propTypes = {
-    loginState: PropTypes.string.isRequired
-  }
-
+class RenderLoginState extends Component {
   renderLoginState = () => {
     const {loginState} = this.props;
     if (loginState === 'inProgress') {
-      return 'Loading';
+      return (
+        <Button color="inherit" disabled>
+          <CircularProgress size={24} color="secondary" />
+        </Button>
+      );
     }
     else {
       return (
@@ -40,8 +40,8 @@ export class RenderLoginState extends Component {
   }
 }
 
-const mapStateToProps = ({users}) => ({
-    loginState: users.loginState
+const mapStateToProps = state => ({
+    loginState: state.getIn(['users', 'loginState'])
 });
 
 const mapDispatchToProps = {
