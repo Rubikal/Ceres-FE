@@ -1,5 +1,6 @@
-![Ceres](src/logo.svg)
-
+<div style="text-align: center">
+  <img src="public/favicon.ico" />
+</div>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
