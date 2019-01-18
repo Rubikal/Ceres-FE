@@ -8,8 +8,10 @@ import { reducer } from 'redux-form/immutable';
 
 import orders from './orders';
 import orderForm from './orderForm';
+import users from './users';
 
 const rootReducer = (history) => combineReducers({
+  users: users,
   router: connectRouter(history),
   form: reducer,
   orders: combineReducers({
