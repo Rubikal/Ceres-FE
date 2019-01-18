@@ -1,4 +1,4 @@
-<img src="public/favicon.ico" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="src/logo.svg" style="max-width: 100" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
