@@ -1,6 +1,7 @@
 import ActiveOrder from '../components/orders/ActiveOrder';
 import CreateOrder from '../components/orders/CreateOrder';
 import Login from '../components/users/Login';
+import OauthProgress from '../components/users/OauthProgress';
 
 const routes = [
   {
@@ -15,10 +16,15 @@ const routes = [
     component: CreateOrder
   },
   {
+    title: 'Login in progress',
+    path: '/login/callback/',
+    component: OauthProgress
+  },
+  {
     title: 'Login',
     path: '/login',
     component: Login
-  }
+  },
 ];
 
 export default routes;
