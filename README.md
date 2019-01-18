@@ -1,6 +1,4 @@
-<div style="text-align: center">
-  <img src="public/favicon.ico" />
-</div>
+<img src="public/favicon.ico" style="margin-left: auto; margin-right: auto; display: block;" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
