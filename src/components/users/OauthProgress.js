@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { updateLoginState } from '../../store/action-creators/users';
+import { updateLoginState, loginUser } from '../../store/action-creators/users';
 
 const styles = theme => ({
   progress: {
@@ -19,6 +19,7 @@ export class OauthProgress extends Component {
 
   componentDidMount() {
     this.props.updateLoginState({state: 'inProgress'});
+    this.props.loginUser();
   }
 
   render() {
@@ -36,7 +37,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    updateLoginState
+    updateLoginState,
+    loginUser
 }
 
 const reduxConnected = connect(mapStateToProps, mapDispatchToProps)(OauthProgress);

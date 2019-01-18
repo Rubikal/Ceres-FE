@@ -5,7 +5,10 @@ import {
   takeLatest,
   select,
 } from 'redux-saga/effects';
+import axios from 'axios';
+import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
+import { getSlackCode } from '../selectors/router';
 
 /**
  * @param {object} action
@@ -13,7 +16,10 @@ import * as usersActionTypes from '../action-types/users';
  */
 function* loginUser(action) {
   try {
-    // send the request
+    const code = yield select(getSlackCode);
+    yield axios.post(`${getRootURL()}/login`, {
+      code
+    });
   } catch (error) {
     // handle errors
   }
