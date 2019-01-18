@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Logo from './../../logo.svg';
 
 import RenderLoginState from '../users/RenderLoginState';
 
@@ -38,7 +39,9 @@ class Nav extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Link to="/" style={styles.linkStyles}>Ceres</Link>
+              <Link to="/" style={styles.linkStyles}>
+              <img src={Logo} className="App-logo" alt="logo" />
+              </Link>
             </Typography>
             <RenderLoginState />
           </Toolbar>
