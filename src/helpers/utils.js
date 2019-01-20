@@ -1,1 +1,4 @@
-export const getRootURL = () => 'http://localhost:3000';
+import config from 'ceres-config';
+
+
+export const getRootURL = () => config.CERES_BE_URL;
