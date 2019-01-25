@@ -13,6 +13,9 @@ const styles = {
   linkStyles: {
     color: 'inherit',
     textDecoration: 'none'
+  },
+  menuStyles: {
+    marginTop: 40
   }
 };
 
@@ -77,6 +80,7 @@ class RenderLoginState extends Component {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
+        style={styles.menuStyles}
       >
         <MenuItem onClick={this.logout}>Logout</MenuItem>
       </Menu>
