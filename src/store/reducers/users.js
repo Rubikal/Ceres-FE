@@ -4,7 +4,7 @@ import { getLocalStorage } from '../../helpers/cache';
 
 const userFromLocalStorage = JSON.parse(getLocalStorage('user')); 
 const initialState = Map({
-  loginState: userFromLocalStorage.jwt ? 'loggedIn' : null,
+  loginState: !!userFromLocalStorage ? !!userFromLocalStorage.jwt ? 'loggedIn' : null : null,
   userInfo: Map(userFromLocalStorage)
 });
 

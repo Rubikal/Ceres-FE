@@ -6,6 +6,7 @@ import {
   select,
 } from 'redux-saga/effects';
 import axios from 'axios';
+import { push } from 'connected-react-router';
 import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
 import { setUser } from '../action-creators/users';
@@ -24,6 +25,7 @@ function* loginUser(action) {
     });
     yield setLocalStorage('user', data);
     yield put(setUser(data));
+    yield put(push('/'));
     yield console.log('The user: ', data);
     
   } catch (error) {
