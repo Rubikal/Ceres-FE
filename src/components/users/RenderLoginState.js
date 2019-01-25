@@ -12,12 +12,7 @@ const styles = {
   linkStyles: {
     color: 'inherit',
     textDecoration: 'none'
-  },
-   bigAvatar: {
-     margin: 10,
-     width: 60,
-     height: 60,
-   },
+  }
 };
 
 class RenderLoginState extends Component {
@@ -37,7 +32,7 @@ class RenderLoginState extends Component {
     } else if(loginState === 'loggedIn') {
       return (
         <IconButton color="inherit">
-          <Avatar alt={userName} src={avatar} className={styles.bigAvatar} />
+          <Avatar alt={userName} src={avatar} />
         </IconButton>
       );
     }
