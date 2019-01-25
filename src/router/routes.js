@@ -4,6 +4,7 @@ import CreateOrder from '../components/orders/CreateOrder';
 import Login from '../components/users/Login';
 import OauthProgress from '../components/users/OauthProgress';
 import { getLocalStorage } from '../helpers/cache';
+import NotFound from '../components/grid/NotFound';
 
 const user = JSON.parse(getLocalStorage('user'));
 const auth = !!user ? !!user.jwt : false;
@@ -29,6 +30,10 @@ const routes = [
     title: 'Login',
     path: '/login',
     component: Login
+  },
+  {
+    title: '404',
+    component: NotFound
   },
 ];
 
