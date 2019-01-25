@@ -1,19 +1,24 @@
+import { connect } from 'react-redux';
 import ActiveOrder from '../components/orders/ActiveOrder';
 import CreateOrder from '../components/orders/CreateOrder';
 import Login from '../components/users/Login';
 import OauthProgress from '../components/users/OauthProgress';
+import { getLocalStorage } from '../helpers/cache';
+
+const user = JSON.parse(getLocalStorage('user'));
+const auth = !!user ? !!user.jwt : false;
 
 const routes = [
   {
     title: 'Your active order',
     path: '/',
     exact: true,
-    component: ActiveOrder
+    component: auth ? ActiveOrder : Login
   },
   {
     title: 'Create new order',
     path: '/create-order',
-    component: CreateOrder
+    component: auth ? CreateOrder : Login
   },
   {
     title: 'Login in progress',

@@ -6,9 +6,12 @@ import {
   select,
 } from 'redux-saga/effects';
 import axios from 'axios';
+import { push } from 'connected-react-router';
 import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
+import { setUser } from '../action-creators/users';
 import { getSlackCode } from '../selectors/router';
+import { setLocalStorage, removeLocalStorage } from '../../helpers/cache';
 
 /**
  * @param {object} action
@@ -17,9 +20,25 @@ import { getSlackCode } from '../selectors/router';
 function* loginUser(action) {
   try {
     const code = yield select(getSlackCode);
-    yield axios.post(`${getRootURL()}/login`, {
+    const { data } = yield axios.post(`${getRootURL()}/login`, {
       code
     });
+    yield setLocalStorage('user', data);
+    yield put(setUser(data));
+    yield put(push('/'));
+    yield window.location.reload();
+    yield console.log('The user: ', data);
+    
+  } catch (error) {
+    // handle errors
+  }
+}
+
+function* logoutUser(action) {
+  try {
+    yield removeLocalStorage('user');
+    yield put(push('/login'));
+    yield window.location.reload();
   } catch (error) {
     // handle errors
   }
@@ -33,5 +52,6 @@ function* loginUser(action) {
 export default function* terms() {
   yield all([
     takeLatest(usersActionTypes.LOGIN_USER, loginUser),
+    takeLatest(usersActionTypes.LOGOUT_USER, logoutUser),
   ]);
 }

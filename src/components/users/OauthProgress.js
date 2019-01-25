@@ -33,13 +33,12 @@ export class OauthProgress extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
-})
+});
 
 const mapDispatchToProps = {
     updateLoginState,
     loginUser
-}
+};
 
 const reduxConnected = connect(mapStateToProps, mapDispatchToProps)(OauthProgress);
 export default withStyles(styles)(reduxConnected);

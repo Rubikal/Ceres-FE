@@ -8,3 +8,12 @@ export const updateLoginState = ({state}) => ({
 export const loginUser = () => ({
   type: usersActionTypes.LOGIN_USER
 });
+
+export const setUser = user => ({
+  type: usersActionTypes.SET_USER,
+  payload: user
+});
+
+export const logoutUser = () => ({
+  type: usersActionTypes.LOGOUT_USER,
+});
