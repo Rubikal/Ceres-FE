@@ -37,11 +37,12 @@ class RenderLoginState extends Component {
       );
     } else if(loginState === 'loggedIn') {
       return (
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
+          <IconButton 
+            onClick={this.handleProfileMenuOpen}
+            color="inherit"
+          >
             <Avatar alt={userName} src={avatar} />
           </IconButton>
-        </MenuItem>
       );
     }
     else {
