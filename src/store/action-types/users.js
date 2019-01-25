@@ -1,3 +1,4 @@
 export const UPDATE_LOGIN_STATE = 'USERS::UPDATE_LOGIN_STATE';
 export const LOGIN_USER = 'USERS::LOGIN_USER';
 export const SET_USER = 'USERS::SET_USER';
+export const LOGOUT_USER = 'USERS::LOGOUT_USER';

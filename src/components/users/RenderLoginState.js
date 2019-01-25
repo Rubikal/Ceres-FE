@@ -5,8 +5,9 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
+import { logoutUser } from '../../store/action-creators/users';
 
 const styles = {
   linkStyles: {
@@ -16,6 +17,11 @@ const styles = {
 };
 
 class RenderLoginState extends Component {
+  state = {
+    anchorEl: null
+  };
+  
+
   renderLoginState = () => {
     const {
       loginState,
@@ -31,9 +37,11 @@ class RenderLoginState extends Component {
       );
     } else if(loginState === 'loggedIn') {
       return (
-        <IconButton color="inherit">
-          <Avatar alt={userName} src={avatar} />
-        </IconButton>
+        <MenuItem onClick={this.handleProfileMenuOpen}>
+          <IconButton color="inherit">
+            <Avatar alt={userName} src={avatar} />
+          </IconButton>
+        </MenuItem>
       );
     }
     else {
@@ -46,10 +54,37 @@ class RenderLoginState extends Component {
       );
     }
   }
+  handleProfileMenuOpen = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+  handleMenuClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  logout = () => {
+    this.handleMenuClose();
+    this.props.logoutUser();
+  }
+  
   render() {
+    const { anchorEl } = this.state;
+    const isMenuOpen = Boolean(anchorEl);
+    const renderMenu = (
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMenuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem onClick={this.logout}>Logout</MenuItem>
+      </Menu>
+    );
+
     return (
       <div>
           {this.renderLoginState()}
+          {renderMenu}
       </div>
     )
   }
@@ -62,6 +97,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  logoutUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RenderLoginState);

@@ -11,7 +11,7 @@ import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
 import { setUser } from '../action-creators/users';
 import { getSlackCode } from '../selectors/router';
-import { setLocalStorage } from '../../helpers/cache';
+import { setLocalStorage, removeLocalStorage } from '../../helpers/cache';
 
 /**
  * @param {object} action
@@ -34,6 +34,16 @@ function* loginUser(action) {
   }
 }
 
+function* logoutUser(action) {
+  try {
+    yield removeLocalStorage('user');
+    yield put(push('/login'));
+    yield window.location.reload();
+  } catch (error) {
+    // handle errors
+  }
+}
+
 /**
  * terms actions listened for that then call sagas. takeLatest watches for the action and
  * cancels out the saga if it's still running before the latest call to it.
@@ -42,5 +52,6 @@ function* loginUser(action) {
 export default function* terms() {
   yield all([
     takeLatest(usersActionTypes.LOGIN_USER, loginUser),
+    takeLatest(usersActionTypes.LOGOUT_USER, logoutUser),
   ]);
 }
