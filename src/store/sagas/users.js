@@ -9,6 +9,7 @@ import axios from 'axios';
 import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
 import { getSlackCode } from '../selectors/router';
+import { setLocalStorage } from '../../helpers/cache';
 
 /**
  * @param {object} action
@@ -17,9 +18,12 @@ import { getSlackCode } from '../selectors/router';
 function* loginUser(action) {
   try {
     const code = yield select(getSlackCode);
-    yield axios.post(`${getRootURL()}/login`, {
+    const { data } = yield axios.post(`${getRootURL()}/login`, {
       code
     });
+    yield setLocalStorage('jwt', data.jwt);
+    yield console.log('The user: ', data);
+    
   } catch (error) {
     // handle errors
   }
