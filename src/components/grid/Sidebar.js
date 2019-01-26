@@ -57,6 +57,9 @@ class PlainSidebar extends React.Component {
             <ListItem>
               <Avatar alt={userName} src={avatar} className={classes.bigAvatar} />
             </ListItem>
+            <ListItem>
+              <ListItemText inset primary={userName} />
+            </ListItem>
           </List>
           <Divider />
           <div
