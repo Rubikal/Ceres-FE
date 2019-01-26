@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import Restaurant from '@material-ui/icons/Restaurant';
 import Archive from '@material-ui/icons/Archive';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
+import NightMode from '@material-ui/icons/Brightness2';
+import Switch from '@material-ui/core/Switch';
 
 const styles = {
   list: {
@@ -28,6 +30,14 @@ const styles = {
 };
 
 class PlainSidebar extends React.Component {
+
+  state = {
+    nightMode: false
+  }
+
+  handleNightModeChange = () => {
+    this.setState({nightMode: !this.state.nightMode});
+  }
 
   render() {
     const { classes } = this.props;
@@ -85,6 +95,16 @@ class PlainSidebar extends React.Component {
           >
             {sideList}
           </div>
+          <ListItem button>
+            <NightMode />
+            <ListItemText primary="Night Mode" />
+            <Switch
+              checked={this.state.nightMode}
+              onChange={this.handleNightModeChange}
+              value="nightMode"
+              color="primary"
+            />
+          </ListItem>
           </List>
         </SwipeableDrawer>
     );
