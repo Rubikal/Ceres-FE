@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -29,7 +30,7 @@ const styles = {
   }
 };
 
-class Nav extends Component {
+class UnstyledNav extends Component {
 
    state = {
      left: false,
@@ -42,19 +43,22 @@ class Nav extends Component {
    };
 
   render() {
-    const { classes } = this.props;
+    const { classes, loginState } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton 
-              className={classes.menuButton} 
-              color="inherit" 
-              aria-label="Menu"
-              onClick={this.toggleDrawer('left', true)}
-            >
-              <MenuIcon />
-            </IconButton>
+            {
+              loginState === 'loggedIn' &&
+              <IconButton 
+                className={classes.menuButton} 
+                color="inherit" 
+                aria-label="Menu"
+                onClick={this.toggleDrawer('left', true)}
+              >
+                <MenuIcon />
+              </IconButton>
+            }
             <Typography variant="h6" color="inherit" className={classes.grow}>
               <Link to="/" style={styles.linkStyles}>
               <img src={Logo} className="App-logo" alt="logo" />
@@ -69,8 +73,17 @@ class Nav extends Component {
   }
 }
 
-Nav.propTypes = {
+UnstyledNav.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Nav);
+const mapStateToProps = state => ({
+  loginState: state.getIn(['users', 'loginState']),
+});
+
+const mapDispatchToProps = {
+};
+
+const Nav = withStyles(styles)(UnstyledNav);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

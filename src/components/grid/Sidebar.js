@@ -49,7 +49,7 @@ class PlainSidebar extends React.Component {
 
     return ( 
         <SwipeableDrawer
-          open={this.props.left}
+          open={this.props.left && loginState === 'loggedIn'}
           onClose={this.props.toggleDrawer('left', false)}
           onOpen={this.props.toggleDrawer('left', true)}
         >
