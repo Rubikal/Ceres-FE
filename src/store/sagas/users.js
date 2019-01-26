@@ -42,12 +42,7 @@ function* logoutUser(action) {
   }
 }
 
-/**
- * terms actions listened for that then call sagas. takeLatest watches for the action and
- * cancels out the saga if it's still running before the latest call to it.
- * @returns {IterableIterator<*|AllEffect|GenericAllEffect<any>>}
- */
-export default function* terms() {
+export default function* users() {
   yield all([
     takeLatest(usersActionTypes.LOGIN_USER, loginUser),
     takeLatest(usersActionTypes.LOGOUT_USER, logoutUser),

@@ -19,12 +19,7 @@ function* updateOrderStatus(action) {
   }
 }
 
-/**
- * terms actions listened for that then call sagas. takeLatest watches for the action and
- * cancels out the saga if it's still running before the latest call to it.
- * @returns {IterableIterator<*|AllEffect|GenericAllEffect<any>>}
- */
-export default function* terms() {
+export default function* orders() {
   yield all([
     takeLatest(ordersActionTypes.UPDATE_ORDER_STATUS, updateOrderStatus),
   ]);

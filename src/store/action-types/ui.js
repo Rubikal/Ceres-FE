@@ -1,0 +1,1 @@
+export const SET_NIGHT_MODE = 'SIDEBAR::SET_NIGHT_MODE';

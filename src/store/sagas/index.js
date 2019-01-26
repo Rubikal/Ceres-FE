@@ -1,6 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 import ordersSagas from './orders';
 import usersSagas from './users';
+import uiSagas from './ui';
 
 /**
  * Saga that watches all other imported aggregated sagas
@@ -11,7 +12,8 @@ import usersSagas from './users';
 export default function* rootSaga() {
   yield all([
      fork(ordersSagas),
-     fork(usersSagas)
+     fork(usersSagas),
+     fork(uiSagas)
      // and more imported sagas
   ]);
 }

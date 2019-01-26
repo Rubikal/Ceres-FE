@@ -9,6 +9,7 @@ import { reducer } from 'redux-form/immutable';
 import orders from './orders';
 import orderForm from './orderForm';
 import users from './users';
+import sidebar from './sidebar';
 
 const rootReducer = history => combineReducers({
   router: connectRouter(history),
@@ -16,6 +17,9 @@ const rootReducer = history => combineReducers({
   orders: combineReducers({
     userOrders: orders,
     orderForm
+  }),
+  ui: combineReducers({
+    sidebar
   }),
   users
 });

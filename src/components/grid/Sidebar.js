@@ -15,6 +15,7 @@ import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import NightMode from '@material-ui/icons/Brightness2';
 import Switch from '@material-ui/core/Switch';
 import { getLocalStorage, setLocalStorage } from '../../helpers/cache';
+import { setNightMode } from '../../store/action-creators/ui';
 
 const styles = {
   list: {
@@ -34,9 +35,8 @@ class PlainSidebar extends React.Component {
   }
 
   handleNightModeChange = () => {
-    this.setState({nightMode: !this.state.nightMode}, () => {
-      setLocalStorage('nightMode', this.state.nightMode)
-    });
+    const { setNightMode, nightMode } = this.props;
+    setNightMode(!nightMode);
   }
 
   render() {
@@ -46,7 +46,8 @@ class PlainSidebar extends React.Component {
       avatar,
       userName,
       wallet,
-      isAdmin
+      isAdmin,
+      nightMode
     } = this.props;
 
     const sideList = (
@@ -99,7 +100,7 @@ class PlainSidebar extends React.Component {
             <NightMode />
             <ListItemText primary="Night Mode" />
             <Switch
-              checked={this.state.nightMode}
+              checked={nightMode}
               onChange={this.handleNightModeChange}
               value="nightMode"
               color="primary"
@@ -120,11 +121,12 @@ const mapStateToProps = state => ({
   avatar: state.getIn(['users', 'userInfo', 'avatar']),
   userName: state.getIn(['users', 'userInfo', 'name']),
   wallet: state.getIn(['users', 'userInfo', 'wallet']),
-  isAdmin: state.getIn(['users', 'userInfo', 'isAdmin'])
+  isAdmin: state.getIn(['users', 'userInfo', 'isAdmin']),
+  nightMode: state.getIn(['ui', 'sidebar', 'nightMode'])
 });
 
 const mapDispatchToProps = {
-
+  setNightMode
 };
 
 const Sidebar = withStyles(styles)(PlainSidebar);
