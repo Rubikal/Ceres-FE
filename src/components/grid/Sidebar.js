@@ -9,10 +9,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
 import Avatar from '@material-ui/core/Avatar';
 import MailIcon from '@material-ui/icons/Mail';
-import Grid from '@material-ui/core/Grid';
 
 const styles = {
   list: {
@@ -32,11 +31,18 @@ class PlainSidebar extends React.Component {
     const {
       loginState,
       avatar,
-      userName
+      userName,
+      wallet
     } = this.props;
 
     const sideList = (
       <div className={classes.list}>
+        <List>
+          <ListItem>
+            <AccountBalanceWallet />
+            <ListItemText primary={wallet} />
+          </ListItem>
+        </List>
         <Divider />
       </div>
     );
@@ -74,6 +80,7 @@ const mapStateToProps = state => ({
   loginState: state.getIn(['users', 'loginState']),
   avatar: state.getIn(['users', 'userInfo', 'avatar']),
   userName: state.getIn(['users', 'userInfo', 'name']),
+  wallet: state.getIn(['users', 'userInfo', 'wallet']),
 });
 
 const mapDispatchToProps = {
