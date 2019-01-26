@@ -25,8 +25,8 @@ function* loginUser(action) {
     });
     yield setLocalStorage('user', data);
     yield put(setUser(data));
-    yield put(push('/'));
     yield window.location.reload();
+    yield put(push('/'));
     yield console.log('The user: ', data);
     
   } catch (error) {
@@ -37,7 +37,6 @@ function* loginUser(action) {
 function* logoutUser(action) {
   try {
     yield removeLocalStorage('user');
-    yield put(push('/login'));
     yield window.location.reload();
   } catch (error) {
     // handle errors
