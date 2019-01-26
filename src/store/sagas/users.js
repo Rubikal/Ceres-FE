@@ -36,7 +36,7 @@ function* loginUser(action) {
 function* logoutUser(action) {
   try {
     yield removeLocalStorage('user');
-    yield window.location.reload();
+    yield window.location = '/login';
   } catch (error) {
     // handle errors
   }
