@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from './../../logo.svg';
+import Sidebar from './Sidebar';
 
 import RenderLoginState from '../users/RenderLoginState';
 
@@ -29,13 +30,29 @@ const styles = {
 };
 
 class Nav extends Component {
+
+   state = {
+     left: false,
+   };
+
+   toggleDrawer = (side, open) => () => {
+     this.setState({
+       [side]: open,
+     });
+   };
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton 
+              className={classes.menuButton} 
+              color="inherit" 
+              aria-label="Menu"
+              onClick={this.toggleDrawer('left', true)}
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
@@ -46,6 +63,7 @@ class Nav extends Component {
             <RenderLoginState />
           </Toolbar>
         </AppBar>
+        <Sidebar left={this.state.left} toggleDrawer={this.toggleDrawer} />
       </div>
     )
   }
