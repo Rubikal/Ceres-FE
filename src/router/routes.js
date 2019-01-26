@@ -33,7 +33,7 @@ const routes = [
   },
   {
     title: '404',
-    component: NotFound
+    component: auth ? NotFound : Login
   },
 ];
 
