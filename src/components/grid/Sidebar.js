@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
 import Avatar from '@material-ui/core/Avatar';
-import MailIcon from '@material-ui/icons/Mail';
 import Restaurant from '@material-ui/icons/Restaurant';
 import Archive from '@material-ui/icons/Archive';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import NightMode from '@material-ui/icons/Brightness2';
 import Switch from '@material-ui/core/Switch';
+import { getLocalStorage, setLocalStorage } from '../../helpers/cache';
 
 const styles = {
   list: {
@@ -32,11 +30,13 @@ const styles = {
 class PlainSidebar extends React.Component {
 
   state = {
-    nightMode: false
+    nightMode: JSON.parse(getLocalStorage('nightMode'))
   }
 
   handleNightModeChange = () => {
-    this.setState({nightMode: !this.state.nightMode});
+    this.setState({nightMode: !this.state.nightMode}, () => {
+      setLocalStorage('nightMode', this.state.nightMode)
+    });
   }
 
   render() {
