@@ -13,7 +13,7 @@ import Sidebar from './Sidebar';
 
 import RenderLoginState from '../users/RenderLoginState';
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -27,8 +27,8 @@ const styles = {
   linkStyles: {
     color: 'inherit',
     textDecoration: 'none'
-  }
-};
+  },
+});
 
 class UnstyledNav extends Component {
 
