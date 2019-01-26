@@ -37,13 +37,10 @@ class PlainSidebar extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>
-          <ListItem>
+          <ListItem button>
             <AccountBalanceWallet />
             <ListItemText primary={`${wallet} EGP`} />
           </ListItem>
-        </List>
-        <Divider />
       </div>
     );
 
@@ -60,7 +57,6 @@ class PlainSidebar extends React.Component {
             <ListItem>
               <ListItemText inset primary={userName} />
             </ListItem>
-          </List>
           <Divider />
           <div
             tabIndex={0}
@@ -70,6 +66,7 @@ class PlainSidebar extends React.Component {
           >
             {sideList}
           </div>
+          </List>
         </SwipeableDrawer>
     );
   }
