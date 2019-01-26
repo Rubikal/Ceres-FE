@@ -12,6 +12,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
 import Avatar from '@material-ui/core/Avatar';
 import MailIcon from '@material-ui/icons/Mail';
+import Restaurant from '@material-ui/icons/Restaurant';
+import Archive from '@material-ui/icons/Archive';
+import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 
 const styles = {
   list: {
@@ -32,7 +35,8 @@ class PlainSidebar extends React.Component {
       loginState,
       avatar,
       userName,
-      wallet
+      wallet,
+      isAdmin
     } = this.props;
 
     const sideList = (
@@ -41,6 +45,21 @@ class PlainSidebar extends React.Component {
             <AccountBalanceWallet />
             <ListItemText primary={`${wallet} EGP`} />
           </ListItem>
+          <ListItem button>
+            <Restaurant />
+            <ListItemText primary="Active Orders" />
+          </ListItem>
+          <ListItem button>
+            <Archive />
+            <ListItemText primary="Old Orders" />
+          </ListItem>
+          {
+            isAdmin &&
+            <ListItem button>
+              <SupervisorAccount />
+              <ListItemText primary="Manage Employees" />
+            </ListItem>
+          }
       </div>
     );
 
@@ -81,6 +100,7 @@ const mapStateToProps = state => ({
   avatar: state.getIn(['users', 'userInfo', 'avatar']),
   userName: state.getIn(['users', 'userInfo', 'name']),
   wallet: state.getIn(['users', 'userInfo', 'wallet']),
+  isAdmin: state.getIn(['users', 'userInfo', 'isAdmin'])
 });
 
 const mapDispatchToProps = {
