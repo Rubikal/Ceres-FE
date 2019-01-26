@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from './../../logo.svg';
+import Sidebar from './Sidebar';
 
 import RenderLoginState from '../users/RenderLoginState';
 
@@ -28,16 +30,35 @@ const styles = {
   }
 };
 
-class Nav extends Component {
+class UnstyledNav extends Component {
+
+   state = {
+     left: false,
+   };
+
+   toggleDrawer = (side, open) => () => {
+     this.setState({
+       [side]: open,
+     });
+   };
+
   render() {
-    const { classes } = this.props;
+    const { classes, loginState } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
+            {
+              loginState === 'loggedIn' &&
+              <IconButton 
+                className={classes.menuButton} 
+                color="inherit" 
+                aria-label="Menu"
+                onClick={this.toggleDrawer('left', true)}
+              >
+                <MenuIcon />
+              </IconButton>
+            }
             <Typography variant="h6" color="inherit" className={classes.grow}>
               <Link to="/" style={styles.linkStyles}>
               <img src={Logo} className="App-logo" alt="logo" />
@@ -46,13 +67,23 @@ class Nav extends Component {
             <RenderLoginState />
           </Toolbar>
         </AppBar>
+        <Sidebar left={this.state.left} toggleDrawer={this.toggleDrawer} />
       </div>
     )
   }
 }
 
-Nav.propTypes = {
+UnstyledNav.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Nav);
+const mapStateToProps = state => ({
+  loginState: state.getIn(['users', 'loginState']),
+});
+
+const mapDispatchToProps = {
+};
+
+const Nav = withStyles(styles)(UnstyledNav);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
