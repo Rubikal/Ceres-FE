@@ -40,7 +40,7 @@ class PlainSidebar extends React.Component {
         <List>
           <ListItem>
             <AccountBalanceWallet />
-            <ListItemText primary={wallet} />
+            <ListItemText primary={`${wallet} EGP`} />
           </ListItem>
         </List>
         <Divider />
