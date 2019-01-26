@@ -29,7 +29,7 @@ const routes = [
   {
     title: 'Login',
     path: '/login',
-    component: Login
+    component: auth ? NotFound : Login
   },
   {
     title: '404',
