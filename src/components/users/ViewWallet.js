@@ -15,13 +15,13 @@ export class ViewWallet extends Component {
         <Typography variant="h4" component="h2" style={{marginBottom: 30, marginTop: 50}}>
           Your Wallet
         </Typography>
-        <Typography variant="h5" component="h3" style={{marginBottom: 30, marginTop: 50}}>
+        <Typography variant="h5" component="h3" style={{marginBottom: 10, marginTop: 20}}>
           Total Balance: ({wallet}) EGP
         </Typography>
-        <Typography variant="h5" component="h3" style={{marginBottom: 30, marginTop: 50}}>
+        <Typography variant="h5" component="h3" style={{marginBottom: 10, marginTop: 20}}>
           Rubikal Allowance: ({allowance}) EGP
         </Typography>
-        <Typography variant="h5" component="h3" style={{marginBottom: 30, marginTop: 50}}>
+        <Typography variant="h5" component="h3" style={{marginBottom: 10, marginTop: 20}}>
           Personal Deposit: ({personalDeposit}) EGP
         </Typography>
       </div>
