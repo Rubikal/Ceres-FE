@@ -41,7 +41,6 @@ class PlainSidebar extends React.Component {
   handleNightModeChange = () => {
     const { setNightMode, nightMode } = this.props;
     setNightMode(!nightMode);
-    this.context.changeTheme(!nightMode);
   }
 
   render() {
