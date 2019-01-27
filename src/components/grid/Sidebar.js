@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { push } from 'connected-react-router';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -49,6 +50,8 @@ class PlainSidebar extends React.Component {
     this.props.getWallet()
   }
 
+  handleWalletClick = () => this.props.push('/view-wallet');
+
   render() {
     const { classes } = this.props;
     const {
@@ -62,7 +65,7 @@ class PlainSidebar extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-          <ListItem button>
+          <ListItem button onClick={this.handleWalletClick}>
             <AccountBalanceWallet />
             <ListItemText primary={`${wallet} EGP`} />
           </ListItem>
@@ -145,7 +148,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setNightMode,
-  getWallet
+  getWallet,
+  push
 };
 
 const Sidebar = withStyles(styles)(PlainSidebar);
