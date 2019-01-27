@@ -47,7 +47,11 @@ class PlainSidebar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getWallet()
+    const { loginState, getWallet } = this.props;
+
+    if (loginState === 'loggedIn') {
+      getWallet()
+    }
   }
 
   handleWalletClick = () => this.props.push('/view-wallet');

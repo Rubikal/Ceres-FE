@@ -6,7 +6,9 @@ const userFromLocalStorage = JSON.parse(getLocalStorage('user'));
 const walletFromLocalStorage = JSON.parse(getLocalStorage('wallet'));
 const initialState = Map({
   loginState: !!userFromLocalStorage ? !!userFromLocalStorage.jwt ? 'loggedIn' : null : null,
-  userInfo: Map(merge(userFromLocalStorage, {wallet: walletFromLocalStorage}))
+  userInfo: userFromLocalStorage && Map(merge(userFromLocalStorage, {
+    wallet: walletFromLocalStorage
+  }))
 });
 
 const users = (state = initialState, action) => {
