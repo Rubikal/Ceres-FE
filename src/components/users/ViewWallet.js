@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
+import { getWallet } from '../../store/action-creators/users';
 
 export class ViewWallet extends Component {
   static propTypes = {
+  }
+
+  componentDidMount() {
+    this.props.getWallet()
   }
 
   render() {
@@ -36,7 +41,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  
+  getWallet
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewWallet);
