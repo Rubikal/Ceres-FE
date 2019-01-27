@@ -10,7 +10,8 @@ import { setLocalStorage } from '../../helpers/cache';
 
 function* setNightMode(action) {
   try {
-    yield setLocalStorage('nightMode', action.payload)
+    yield setLocalStorage('nightMode', action.payload);
+    yield window.location.reload();
   } catch (error) {
     // handle errors
   }
