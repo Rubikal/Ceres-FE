@@ -22,14 +22,14 @@ class NoActiveOrder extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Paper className={classes.root} elevation={0}>
+        <div className={classes.root} elevation={0}>
           <Typography variant="h5" component="h3">
            You don't have any active orders!
           </Typography>
           <div className={classes.kawaii}>
             <IceCream size={270} mood="shocked" color={yellow.A700} />
           </div>
-        </Paper>
+        </div>
       </div>
     );
   }

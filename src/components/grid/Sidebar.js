@@ -34,9 +34,14 @@ class PlainSidebar extends React.Component {
     nightMode: JSON.parse(getLocalStorage('nightMode'))
   }
 
+  static contextTypes = {
+    changeTheme: PropTypes.func
+  };
+
   handleNightModeChange = () => {
     const { setNightMode, nightMode } = this.props;
     setNightMode(!nightMode);
+    this.context.changeTheme(!nightMode);
   }
 
   render() {

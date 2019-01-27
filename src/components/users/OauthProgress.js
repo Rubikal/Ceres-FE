@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { updateLoginState, loginUser } from '../../store/action-creators/users';
@@ -25,7 +26,9 @@ export class OauthProgress extends Component {
   render() {
     return (
       <div>
-        <h3>Signing in using Slack!</h3>
+        <Typography variant="h5" component="h3" style={{marginBottom: 30, marginTop: 50}}>
+          Signing in using Slack!
+        </Typography>
         <CircularProgress className={this.props.classes.progress} />
       </div>
     )
