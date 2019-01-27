@@ -17,3 +17,12 @@ export const setUser = user => ({
 export const logoutUser = () => ({
   type: usersActionTypes.LOGOUT_USER,
 });
+
+export const updateWallet = payload => ({
+  type: usersActionTypes.UPDATE_WALLET,
+  payload
+});
+
+export const getWallet = () => ({
+  type: usersActionTypes.GET_WALLET
+});

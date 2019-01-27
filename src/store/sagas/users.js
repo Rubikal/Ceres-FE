@@ -9,8 +9,9 @@ import axios from 'axios';
 import { push } from 'connected-react-router';
 import {getRootURL} from '../../helpers/utils';
 import * as usersActionTypes from '../action-types/users';
-import { setUser } from '../action-creators/users';
+import { setUser, updateWallet } from '../action-creators/users';
 import { getSlackCode } from '../selectors/router';
+import { getJWT } from '../selectors/users';
 import { setLocalStorage, removeLocalStorage } from '../../helpers/cache';
 
 /**
@@ -26,10 +27,24 @@ function* loginUser(action) {
     yield setLocalStorage('user', data);
     yield put(setUser(data));
     yield window.location = '/';
-    yield console.log('The user: ', data);
-    
   } catch (error) {
     // handle errors
+  }
+}
+
+function* getWallet(action) {
+  try {
+    const {
+      data: wallet
+    } = yield axios.get(`${getRootURL()}/wallet`, {
+      headers: {
+        Authorization: yield select(getJWT)
+      }
+    });
+    yield setLocalStorage('wallet', wallet);
+    yield put(updateWallet(wallet))
+  } catch {
+
   }
 }
 
@@ -46,5 +61,6 @@ export default function* users() {
   yield all([
     takeLatest(usersActionTypes.LOGIN_USER, loginUser),
     takeLatest(usersActionTypes.LOGOUT_USER, logoutUser),
+    takeLatest(usersActionTypes.GET_WALLET, getWallet),
   ]);
 }

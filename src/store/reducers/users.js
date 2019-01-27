@@ -1,11 +1,12 @@
-import { Map } from 'immutable';
+import { Map, merge } from 'immutable';
 import * as usersActionTypes from '../action-types/users';
 import { getLocalStorage } from '../../helpers/cache';
 
-const userFromLocalStorage = JSON.parse(getLocalStorage('user')); 
+const userFromLocalStorage = JSON.parse(getLocalStorage('user'));
+const walletFromLocalStorage = JSON.parse(getLocalStorage('wallet'));
 const initialState = Map({
   loginState: !!userFromLocalStorage ? !!userFromLocalStorage.jwt ? 'loggedIn' : null : null,
-  userInfo: Map(userFromLocalStorage)
+  userInfo: Map(merge(userFromLocalStorage, {wallet: walletFromLocalStorage}))
 });
 
 const users = (state = initialState, action) => {
@@ -17,6 +18,10 @@ const users = (state = initialState, action) => {
         return state
           .set('loginState', 'loggedIn')
           .set('userInfo', Map(action.payload));
+    
+    case usersActionTypes.UPDATE_WALLET:
+      return state
+        .setIn(['userInfo', 'wallet'], Map(action.payload));
 
     default:
       return state;
