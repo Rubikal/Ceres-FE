@@ -5,6 +5,7 @@ import Login from '../components/users/Login';
 import OauthProgress from '../components/users/OauthProgress';
 import { getLocalStorage } from '../helpers/cache';
 import NotFound from '../components/grid/NotFound';
+import ViewWallet from '../components/users/ViewWallet';
 
 const user = JSON.parse(getLocalStorage('user'));
 const auth = !!user ? !!user.jwt : false;
@@ -30,6 +31,11 @@ const routes = [
     title: 'Login',
     path: '/login',
     component: auth ? NotFound : Login
+  },
+  {
+    title: 'View Wallet',
+    path: '/view-wallet',
+    component: auth ? ViewWallet : Login
   },
   {
     title: '404',
