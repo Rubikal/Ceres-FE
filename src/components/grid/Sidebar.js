@@ -12,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Restaurant from '@material-ui/icons/Restaurant';
 import Archive from '@material-ui/icons/Archive';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
+import Receipt from '@material-ui/icons/Receipt';
 import NightMode from '@material-ui/icons/Brightness2';
 import Switch from '@material-ui/core/Switch';
 import { getLocalStorage, setLocalStorage } from '../../helpers/cache';
@@ -70,10 +71,18 @@ class PlainSidebar extends React.Component {
           </ListItem>
           {
             isAdmin &&
-            <ListItem button>
-              <SupervisorAccount />
-              <ListItemText primary="Manage Employees" />
-            </ListItem>
+            (
+              <>
+              <ListItem button>
+                <Receipt />
+                <ListItemText primary="Manage Orders" />
+              </ListItem>
+              <ListItem button>
+                <SupervisorAccount />
+                <ListItemText primary="Manage Employees" />
+              </ListItem>
+              </>
+            )
           }
       </div>
     );
