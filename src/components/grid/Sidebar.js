@@ -86,6 +86,7 @@ class PlainSidebar extends React.Component {
             isAdmin &&
             (
               <>
+              <Divider />
               <ListItem button>
                 <Receipt />
                 <ListItemText primary="Manage Orders" onClick={() => push('/manage-orders')} />
