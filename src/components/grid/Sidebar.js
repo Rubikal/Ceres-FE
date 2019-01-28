@@ -97,9 +97,9 @@ class PlainSidebar extends React.Component {
             (
               <>
               <Divider />
-              <ListItem button>
+              <ListItem button onClick={() => push('/manage-orders')}>
                 <Receipt />
-                <ListItemText primary="Manage Orders" onClick={() => push('/manage-orders')} />
+                <ListItemText primary="Manage Orders" />
               </ListItem>
               <ListItem button onClick={() => push('/manage-employees')}>
                 <SupervisorAccount />
