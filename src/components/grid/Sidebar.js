@@ -122,6 +122,7 @@ class PlainSidebar extends React.Component {
           >
             {sideList}
           </div>
+          <Divider />
           <ListItem>
             <NightMode />
             <ListItemText primary="Night Mode" />
