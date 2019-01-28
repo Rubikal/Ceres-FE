@@ -64,7 +64,8 @@ class PlainSidebar extends React.Component {
       userName,
       wallet,
       isAdmin,
-      nightMode
+      nightMode,
+      push
     } = this.props;
 
     const sideList = (
@@ -73,11 +74,11 @@ class PlainSidebar extends React.Component {
             <AccountBalanceWallet />
             <ListItemText primary={`${wallet} EGP`} />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={() => push('/')}>
             <Restaurant />
             <ListItemText primary="Active Orders" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={() => push('/old-orders')}>
             <Archive />
             <ListItemText primary="Old Orders" />
           </ListItem>
@@ -87,9 +88,9 @@ class PlainSidebar extends React.Component {
               <>
               <ListItem button>
                 <Receipt />
-                <ListItemText primary="Manage Orders" />
+                <ListItemText primary="Manage Orders" onClick={() => push('/manage-orders')} />
               </ListItem>
-              <ListItem button>
+              <ListItem button onClick={() => push('/manage-employees')}>
                 <SupervisorAccount />
                 <ListItemText primary="Manage Employees" />
               </ListItem>
