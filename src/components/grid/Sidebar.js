@@ -15,6 +15,7 @@ import Archive from '@material-ui/icons/Archive';
 import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
 import Receipt from '@material-ui/icons/Receipt';
 import NightMode from '@material-ui/icons/Brightness2';
+import New from '@material-ui/icons/AddCircleOutlined';
 import Switch from '@material-ui/core/Switch';
 import { getLocalStorage } from '../../helpers/cache';
 import { setNightMode } from '../../store/action-creators/ui';
@@ -78,6 +79,10 @@ class PlainSidebar extends React.Component {
           <ListItem button onClick={this.handleWalletClick}>
             <AccountBalanceWallet />
             <ListItemText primary={`${wallet} EGP`} />
+          </ListItem>
+          <ListItem button onClick={() => push('/new-order')}>
+            <New />
+            <ListItemText primary="Create Order" />
           </ListItem>
           <ListItem button onClick={() => push('/')}>
             <Restaurant />

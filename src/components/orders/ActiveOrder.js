@@ -30,7 +30,7 @@ export class ActiveOrder extends Component {
     return (
       <>
         <NoActiveOrder />
-        <Link to="/create-order/" className={classes.linkStyles}>
+        <Link to="/new-order/" className={classes.linkStyles}>
           <Fab color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
           </Fab>

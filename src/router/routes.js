@@ -19,7 +19,7 @@ const routes = [
   },
   {
     title: 'Create new order',
-    path: '/create-order',
+    path: '/new-order',
     component: auth ? CreateOrder : Login
   },
   {
