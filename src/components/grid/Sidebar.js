@@ -19,16 +19,21 @@ import Switch from '@material-ui/core/Switch';
 import { getLocalStorage } from '../../helpers/cache';
 import { setNightMode } from '../../store/action-creators/ui';
 import { getWallet } from '../../store/action-creators/users';
+import Chip from '@material-ui/core/Chip';
 
 const styles = {
   list: {
     width: 250,
   },
   bigAvatar: {
-    marginLeft: 50,
     width: 100,
     height: 100,
   },
+  centeredListItem: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+  }
 };
 
 class PlainSidebar extends React.Component {
@@ -108,11 +113,15 @@ class PlainSidebar extends React.Component {
           onOpen={this.props.toggleDrawer('left', true)}
         >
           <List>
-            <ListItem>
+            <ListItem className={classes.centeredListItem}>
               <Avatar alt={userName} src={avatar} className={classes.bigAvatar} />
             </ListItem>
-            <ListItem>
-              <ListItemText inset primary={userName} />
+            <ListItem className={classes.centeredListItem}>
+              <Chip
+                label={userName}
+                className={classes.chip}
+                variant="outlined"
+              />
             </ListItem>
           <Divider />
           <div
