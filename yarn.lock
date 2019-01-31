@@ -7325,6 +7325,10 @@ react-app-polyfill@^0.2.0:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
+react-detect-offline@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-detect-offline/-/react-detect-offline-2.1.2.tgz#1827b1db88c8ae40ca70dfd995dfb0aff702126b"
+
 react-dev-utils@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.1.tgz#c53e759a22668ee2c0d146c24ce4bdec2b41e3c8"
