@@ -5,12 +5,12 @@ const validateForm = (values) => {
   const numberPattern = /^[0-9]+$/;
   const numberAndLettersPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
 	const errors = {};
-	const item = values.get('item');
+	const name = values.get('name');
   
-	if (!item) {
-		errors.name = 'field "Item" can\'t be empty';
-	} else if (!numberAndLettersPattern.test(item) && !stringPattern.test(item)) {
-		errors.name = 'field "Item" can have letters and numbers only';
+	if (!name) {
+		errors.name = 'field "Name" can\'t be empty';
+	} else if (!numberAndLettersPattern.test(name) && !stringPattern.test(name)) {
+		errors.name = 'field "Name" can have letters and numbers only';
 	}
 
 	if (Object.keys(errors).length > 0) {
