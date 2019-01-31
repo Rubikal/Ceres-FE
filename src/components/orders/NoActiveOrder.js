@@ -23,7 +23,7 @@ class NoActiveOrder extends Component {
       <div>
         <div className={classes.root} elevation={0}>
           <Typography variant="h5" component="h3">
-           You don't have any active orders!
+           Rubikal doesn't have any active orders!
           </Typography>
           <div className={classes.kawaii}>
             <IceCream size={270} mood="shocked" color={yellow.A700} />
