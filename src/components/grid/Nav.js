@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from './../../logo.svg';
 import Sidebar from './Sidebar';
+import { Detector } from 'react-detect-offline';
 
 import RenderLoginState from '../users/RenderLoginState';
 
@@ -46,6 +47,15 @@ class UnstyledNav extends Component {
     const { classes, loginState } = this.props;
     return (
       <div className={classes.root}>
+        <Detector
+          render={({ online }) => online ? '' :
+            <div className="offline_warning">
+              <Typography variant="h6">
+                You are offline!
+              </Typography>
+            </div>
+          }
+        />
         <AppBar position="static">
           <Toolbar>
             {
