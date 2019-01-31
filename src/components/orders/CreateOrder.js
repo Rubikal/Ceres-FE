@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form/immutable';
+import Typography from '@material-ui/core/Typography';
 import InputField from '../forms/input';
 import {
 	formHasErrorsSelector,
@@ -13,16 +14,22 @@ import {
 } from '../../store/action-creators/orders';
 import validateForm from '../../helpers/formValidation';
 import listFormErrors from '../forms/listFormErrors';
+import Button from '@material-ui/core/Button';
 
 const renderInputComponent = ({ input: { name, onChange, value } }) => {
 	let text;
 	let fieldName;
 
 	switch (name) {
-		case 'item':
-			text = 'Order Item:';
+		case 'name':
+			text = 'Restaurant Name';
 			fieldName = 'item';
-			break;
+      break;
+      
+    case 'url': 
+      text = 'Menu link';
+      fieldName = 'url';
+      break;
 
 		default:
 			text = '';
@@ -41,15 +48,30 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
 
 const CreateOrderForm = ({ handleSubmit, errors, formHasErrors }) => (
   <>
-  <h1>Create a new order</h1>
+  <Typography variant="h5" style={{marginBottom: 20, marginTop: 30}}>
+    Create a new order
+  </Typography>
 	<form onSubmit={handleSubmit(validateForm)}>
-		<div className="register-form">
-			<Field
-				name="item"
-				type="text"
-				component={renderInputComponent}
-			/>
-			<button type="submit">Submit</button>
+    <div className="register-form">
+      <div>
+        <Field
+          name="name"
+          type="text"
+          component={renderInputComponent}
+        />
+      </div>
+      <div>
+        <Field
+        name="url"
+        type="text"
+        component={renderInputComponent}
+        />
+      </div>
+      <div style={{ marginTop: 20 }}>
+        <Button variant="contained" color="primary" type="submit">
+          Submit
+        </Button>
+      </div>
 			{formHasErrors &&
 				<div className="register-form__form-errors">{listFormErrors(errors)}</div>
 			}
