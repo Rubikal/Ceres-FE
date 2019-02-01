@@ -8,9 +8,9 @@ const validateForm = (values) => {
 	const name = values.get('name');
   
 	if (!name) {
-		errors.name = 'field "Name" can\'t be empty';
+		errors.name = 'Restaurant Name can\'t be empty';
 	} else if (!numberAndLettersPattern.test(name) && !stringPattern.test(name)) {
-		errors.name = 'field "Name" can have letters and numbers only';
+		errors.name = 'RestaurantName can only have letters and numbers';
 	}
 
 	if (Object.keys(errors).length > 0) {

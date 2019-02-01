@@ -27,7 +27,7 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
       break;
       
     case 'url': 
-      text = 'Menu link';
+      text = 'Menu Link';
       fieldName = 'url';
       break;
 
