@@ -47,7 +47,7 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
 };
 
 const CreateOrderForm = ({ handleSubmit, errors, formHasErrors }) => (
-  <>
+  <React.Fragment>
   <Typography variant="h5" style={{marginBottom: 20, marginTop: 30}}>
     Create a new order
   </Typography>
@@ -77,7 +77,7 @@ const CreateOrderForm = ({ handleSubmit, errors, formHasErrors }) => (
 			}
 		</div>
   </form>
-  </>
+  </React.Fragment>
 );
 
 

@@ -5,10 +5,16 @@ export const updateOrderStatus = (uuid, status) => ({
   payload: { uuid, status}
 });
 
-export const formSubmitSucceededAction = () => ({
-  type: ordersActionTypes.FORM_SUBMIT_SUCCEEDED
+export const formSubmitSucceededAction = (values) => ({
+  type: ordersActionTypes.FORM_SUBMIT_SUCCEEDED,
+  payload: values.toJS()
 });
 
 export const formSubmitFailedAction = () => ({
   type: ordersActionTypes.FORM_SUBMIT_FAILED
+});
+
+export const createNewOrder = (payload) => ({
+  type: ordersActionTypes.CREATE_NEW_ORDER,
+  payload: payload
 });
