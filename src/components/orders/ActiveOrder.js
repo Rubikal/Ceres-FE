@@ -7,6 +7,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import NoActiveOrder from './NoActiveOrder';
 import { getOrders } from '../../store/action-creators/orders';
+import ActiveOrders from './ActiveOrders';
 
 const styles = theme => ({
   fab: {
@@ -30,11 +31,23 @@ export class ActiveOrder extends Component {
     this.props.getOrders();
   }
 
+  renderActiveOrders() {
+    const { activeOrders } = this.props;
+
+    if (activeOrders.length) {
+      return <ActiveOrders orders={activeOrders} />
+    } else {
+      return <NoActiveOrder />
+    }
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <Fragment>
-        <NoActiveOrder />
+        { 
+          this.renderActiveOrders()
+        }
         <Link to="/new-order/" className={classes.linkStyles}>
           <Fab color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
@@ -46,7 +59,7 @@ export class ActiveOrder extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+  activeOrders: state.getIn(['orders', 'userOrders', 'activeOrders'])
 });
 
 const mapDispatchToProps = {
