@@ -46,6 +46,11 @@ class Order extends Component {
     push(`/orders/${orderId}/submit-items`);
   }
 
+  handleMenuClick = () => {
+    const { order: { menuUrl: menu } } = this.props;
+    window.location = menu;
+  }
+
   render() {
     const { classes, order, view } = this.props;
     return (
@@ -67,23 +72,21 @@ class Order extends Component {
                 {
                   order.menuUrl &&
                   <Grid item>
-                    <Typography>
-                      <LinkIcon className={classes.icon} /> 
-                      {' '}
-                      <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a>
-                    </Typography>
+                    <Button color="secondary" onClick={this.handleMenuClick}>
+                      Menu
+                    </Button>
                   </Grid>
                 }
                 <Grid item>
                   {
                     !view &&
-                    <Button onClick={this.handleViewOrder} variant="contained" color="primary" className={classes.button}>
+                    <Button onClick={this.handleViewOrder} variant="outlined" className={classes.button}>
                       View
                     </Button>
                   }
                   {
                     order.status === 'collecting' &&
-                    <Button onClick={this.handleSubmitItems} variant="contained" color="secondary" className={classes.button}>
+                    <Button onClick={this.handleSubmitItems} variant="contained" color="primary" className={classes.button}>
                       Submit Your Order
                     </Button>
                   }
