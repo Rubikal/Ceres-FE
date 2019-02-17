@@ -5,6 +5,7 @@ import {
   takeLatest,
   select,
 } from 'redux-saga/effects';
+import { push } from 'connected-react-router'
 import { getRootURL } from '../../helpers/utils';
 import { getJWT } from '../selectors/users';
 import { post } from 'axios';
@@ -25,7 +26,6 @@ function* updateOrderStatus(action) {
 
 function* createNewOrder(action) {
   try {
-    // yield console.log('The new order is: ', action.payload);
     yield post(`${getRootURL()}/orders`, {
       data: action.payload,
     }, {
@@ -33,6 +33,7 @@ function* createNewOrder(action) {
         Authorization: yield select(getJWT)
       },
     });
+    yield put(push('/'));
   } catch {
 
   }
