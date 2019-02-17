@@ -45,11 +45,15 @@ const styles = theme => ({
   chip: {
     // margin: theme.spacing.unit,
     fontWeight: 'bold',
+    borderTopRightRadius: 'none',
+    paddingRight: 30,
+    paddingTop: 25,
+    paddingBottom: 15,
   },
   chipPosition: {
     position: 'absolute',
-    right: 1,
-    top: 0,
+    right: -30,
+    top: -15,
     // zIndex: 10
   },
   restaurantName: {
