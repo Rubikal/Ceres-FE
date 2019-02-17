@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Restaurant from '@material-ui/icons/Restaurant';
 import LinkIcon from '@material-ui/icons/Link';
+import { formatOrderStatus } from '../../helpers/utils';
 
 const styles = theme => ({
   root: {
@@ -58,7 +59,7 @@ class Order extends Component {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>Status: {order.status}</Typography>
+                  <Typography>Status: {formatOrderStatus(order.status)}</Typography>
                 </Grid>
                 {
                   order.menuUrl &&
