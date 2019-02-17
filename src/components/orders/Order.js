@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { push } from 'connected-react-router';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -17,34 +20,60 @@ const styles = theme => ({
     marginTop: 20,
     marginBottom: 20
   },
+  button: {
+    margin: theme.spacing.unit,
+  },
 });
 
-function Card(props) {
-  const { classes, order } = props;
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={16}>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={16}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  Restaurant: { order.restaurant }
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography>Menu: <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a></Typography>
+class Order extends Component {
+
+  handleViewOrder = () => {
+    const { order: { orderId }, push } = this.props;
+    push(`/orders/${orderId}`);
+  }
+  render() {
+    const { classes, order } = this.props;
+    return (
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={16}>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={16}>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1">
+                    Restaurant: { order.restaurant }
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Status: {order.status}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography>Menu: <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a></Typography>
+                </Grid>
+                <Grid item>
+                  {
+                    order.status === 'collecting' &&
+                    <Button onClick={this.handleViewOrder} variant="contained" color="primary" className={classes.button}>
+                      Submit Order
+                    </Button>
+                  }
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Paper>
-    </div>
-  );
+        </Paper>
+      </div>
+    );
+  }
 }
 
-Card.propTypes = {
+Order.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Card);
+const mapDispatchToProps = {
+  push
+};
+
+const connectedOrder = connect(null, mapDispatchToProps)(Order);
+export default withStyles(styles)(connectedOrder);
