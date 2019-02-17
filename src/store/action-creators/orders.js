@@ -28,6 +28,15 @@ export const insertOrders = payload => ({
   payload: payload
 });
 
+export const getOldOrders = () => ({
+  type: ordersActionTypes.GET_OLD_ORDERS
+});
+
+export const insertOldOrders = payload => ({
+  type: ordersActionTypes.INSERT_OLD_ORDERS,
+  payload: payload
+});
+
 export const getOrder = orderId => ({
   type: ordersActionTypes.GET_ORDER,
   payload: orderId

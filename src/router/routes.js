@@ -7,6 +7,7 @@ import OauthProgress from '../components/users/OauthProgress';
 import { getLocalStorage } from '../helpers/cache';
 import NotFound from '../components/grid/NotFound';
 import ViewWallet from '../components/users/ViewWallet';
+import OldOrders from '../components/orders/OldOrders';
 
 const user = JSON.parse(getLocalStorage('user'));
 const auth = !!user ? !!user.jwt : false;
@@ -17,6 +18,12 @@ const routes = [
     path: '/',
     exact: true,
     component: auth ? ActiveOrder : Login
+  },
+  {
+    title: 'Old Orders',
+    path: '/old-orders',
+    exact: true,
+    component: auth ? OldOrders : Login
   },
   {
     title: 'Create new order',

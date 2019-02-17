@@ -52,6 +52,19 @@ function* getOrders() {
   }
 }
 
+function* getOldOrders() {
+  try {
+    const { data: { data: orders } } = yield get(`${getRootURL()}/old-orders`, {
+      headers: {
+        Authorization: yield select(getJWT)
+      },
+    });
+    yield put(ordersActionCreators.insertOldOrders(orders));
+  } catch {
+
+  }
+}
+
 function* getOrder({payload: orderId}) {
   try {
     const { data: { data: order } } = yield get(`${getRootURL()}/orders/${orderId}`, {
@@ -70,6 +83,7 @@ export default function* orders() {
     takeLatest(ordersActionTypes.UPDATE_ORDER_STATUS, updateOrderStatus),
     takeLatest(ordersActionTypes.FORM_SUBMIT_SUCCEEDED, createNewOrder),
     takeLatest(ordersActionTypes.GET_ORDERS, getOrders),
-    takeLatest(ordersActionTypes.GET_ORDER, getOrder)
+    takeLatest(ordersActionTypes.GET_ORDER, getOrder),
+    takeLatest(ordersActionTypes.GET_OLD_ORDERS, getOldOrders),
   ]);
 }

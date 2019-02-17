@@ -7,6 +7,7 @@ const initialState = Map({
     status: null
   }),
   selectedOrder: null,
+  oldOrders: List(),
 });
 
 const orders = (state = initialState, action) => {
@@ -17,6 +18,9 @@ const orders = (state = initialState, action) => {
     
     case ordersActionTypes.INSERT_ORDERS:
       return state.set('activeOrders', action.payload);
+
+    case ordersActionTypes.INSERT_OLD_ORDERS:
+      return state.set('oldOrders', action.payload);
 
     case ordersActionTypes.SET_SELECTED_ORDER:
       return state.set('selectedOrder', action.payload);
