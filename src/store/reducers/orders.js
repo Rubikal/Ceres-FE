@@ -13,6 +13,9 @@ const orders = (state = initialState, action) => {
     case ordersActionTypes.UPDATE_ORDER_STATUS:
       const { status } = action.payload;
       return state.setIn(['activeOrder', 'status'], status);
+    
+    case ordersActionTypes.INSERT_ORDERS:
+      return state.set('activeOrders', action.payload);
 
     default:
       return state;

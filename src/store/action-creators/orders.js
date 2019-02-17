@@ -5,7 +5,7 @@ export const updateOrderStatus = (uuid, status) => ({
   payload: { uuid, status}
 });
 
-export const formSubmitSucceededAction = (values) => ({
+export const formSubmitSucceededAction = values => ({
   type: ordersActionTypes.FORM_SUBMIT_SUCCEEDED,
   payload: values.toJS()
 });
@@ -14,7 +14,16 @@ export const formSubmitFailedAction = () => ({
   type: ordersActionTypes.FORM_SUBMIT_FAILED
 });
 
-export const createNewOrder = (payload) => ({
+export const createNewOrder = payload => ({
   type: ordersActionTypes.CREATE_NEW_ORDER,
+  payload: payload
+});
+
+export const getOrders = () => ({
+  type: ordersActionTypes.GET_ORDERS
+});
+
+export const insertOrders = payload => ({
+  type: ordersActionTypes.INSERT_ORDERS,
   payload: payload
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import NoActiveOrder from './NoActiveOrder';
+import { getOrders } from '../../store/action-creators/orders';
 
 const styles = theme => ({
   fab: {
@@ -25,29 +26,33 @@ export class ActiveOrder extends Component {
     classes: PropTypes.object.isRequired,
   }
 
+  componentWillMount() {
+    this.props.getOrders();
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <>
+      <Fragment>
         <NoActiveOrder />
         <Link to="/new-order/" className={classes.linkStyles}>
           <Fab color="primary" aria-label="Add" className={classes.fab}>
             <AddIcon />
           </Fab>
         </Link>
-      </>
+      </Fragment>
     )
   }
 }
 
-// const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   
-// })
+});
 
-// const mapDispatchToProps = {
-  
-// }
+const mapDispatchToProps = {
+  getOrders
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ActiveOrder)
+const connectedActiveOrder =  connect(mapStateToProps, mapDispatchToProps)(ActiveOrder)
 
-export default withStyles(styles)(ActiveOrder);
+export default withStyles(styles)(connectedActiveOrder);
