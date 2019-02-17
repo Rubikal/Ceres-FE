@@ -31,6 +31,12 @@ class Order extends Component {
     const { order: { orderId }, push } = this.props;
     push(`/orders/${orderId}`);
   }
+
+  handleSubmitItems = () => {
+    const { order: { orderId }, push } = this.props;
+    push(`/orders/${orderId}/submit-items`);
+  }
+
   render() {
     const { classes, order, view } = this.props;
     return (
@@ -59,8 +65,8 @@ class Order extends Component {
                   }
                   {
                     order.status === 'collecting' &&
-                    <Button onClick={this.handleViewOrder} variant="contained" color="secondary" className={classes.button}>
-                      Submit Order
+                    <Button onClick={this.handleSubmitItems} variant="contained" color="secondary" className={classes.button}>
+                      Submit Your Order
                     </Button>
                   }
                 </Grid>
