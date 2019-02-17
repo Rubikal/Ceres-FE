@@ -53,9 +53,12 @@ class Order extends Component {
                 <Grid item>
                   <Typography>Status: {order.status}</Typography>
                 </Grid>
-                <Grid item>
-                  <Typography>Menu: <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a></Typography>
-                </Grid>
+                {
+                  order.menuUrl &&
+                  <Grid item>
+                    <Typography>Menu: <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a></Typography>
+                  </Grid>
+                }
                 <Grid item>
                   {
                     !view &&
