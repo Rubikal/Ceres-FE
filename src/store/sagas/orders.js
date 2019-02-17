@@ -8,6 +8,7 @@ import {
 import { getRootURL } from '../../helpers/utils';
 import { getJWT } from '../selectors/users';
 import { post } from 'axios';
+import {reset} from 'redux-form';
 import * as ordersActionTypes from '../action-types/orders';
 
 /**

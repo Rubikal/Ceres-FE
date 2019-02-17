@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form/immutable';
+import { Field, reduxForm, reset } from 'redux-form/immutable';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../forms/input';
 import {
@@ -106,7 +106,10 @@ const CreateOrder = connect(
 	form: 'createOrderForm',
 	onSubmitFail: (errors, dispatch) => dispatch(formSubmitFailedAction()),
 	onSubmit: values => values,
-	onSubmitSuccess: (values, dispatch) => dispatch(formSubmitSucceededAction(values))
+	onSubmitSuccess: (values, dispatch) => {
+    dispatch(formSubmitSucceededAction(values));
+    dispatch(reset('createOrderForm'));
+  }
 })(CreateOrderForm));
 
 export default CreateOrder;

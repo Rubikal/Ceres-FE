@@ -11,9 +11,9 @@ const initialState = new Map({
 const orderForm = (state = initialState, action) => {
   switch(action.type) {
     case FORM_SUBMIT_FAILED:
-	return state.set('formHasErrors', true);
+	    return state.set('formHasErrors', true);
     case FORM_SUBMIT_SUCCEEDED:
-	return state.set('formHasErrors', false);
+	    return state.set('formHasErrors', false);
     default:
 	return state;
   }
