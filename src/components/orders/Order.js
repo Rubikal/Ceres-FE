@@ -28,7 +28,7 @@ const styles = theme => ({
     marginRight: 10,
     minHeight: 220,
     minWidth: 220,
-    position: 'relative'
+    position: 'relative',
     // background: 'rgba(20,20,20,0.16)'
   },
   collecting: {
@@ -46,9 +46,9 @@ const styles = theme => ({
   },
   chipPosition: {
     position: 'absolute',
-    right: 5,
-    top: 5,
-    // zIndex: 10
+    right: -10,
+    top: -5,
+    zIndex: 999
   },
   restaurantName: {
     // position: 'relative',
