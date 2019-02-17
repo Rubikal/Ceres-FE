@@ -8,16 +8,20 @@ import AddIcon from '@material-ui/icons/Add';
 import NoActiveOrder from './NoActiveOrder';
 import { getOrders } from '../../store/action-creators/orders';
 import ActiveOrders from './ActiveOrders';
+import { Typography } from '@material-ui/core';
 
 const styles = theme => ({
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2,
   },
   linkStyles: {
     color: 'inherit',
-    textDecoration: 'none'
+    textDecoration: 'none',
+  },
+  heading: {
+    marginTop: 30
   }
 });
 
@@ -45,6 +49,9 @@ export class ActiveOrder extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
+        <Typography variant="h4" className={classes.heading}>
+          Active Orders
+        </Typography>
         { 
           this.renderActiveOrders()
         }

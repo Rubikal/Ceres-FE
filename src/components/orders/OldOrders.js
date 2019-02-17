@@ -3,21 +3,25 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import NoActiveOrder from './NoActiveOrder';
+import NoOldOrder from './NoOldOrder';
 import { getOldOrders } from '../../store/action-creators/orders';
 import ActiveOrders from './ActiveOrders';
 
 const styles = theme => ({
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2,
   },
   linkStyles: {
     color: 'inherit',
     textDecoration: 'none'
+  },
+  heading: {
+    marginTop: 30
   }
 });
 
@@ -37,7 +41,7 @@ export class OldOrders extends Component {
     if (oldOrders.length) {
       return <ActiveOrders orders={oldOrders} />
     } else {
-      return <NoActiveOrder />
+      return <NoOldOrder />
     }
   }
 
@@ -45,6 +49,9 @@ export class OldOrders extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
+        <Typography variant="h4" className={classes.heading}>
+          Old Orders
+        </Typography>
         { 
           this.renderActiveOrders()
         }
