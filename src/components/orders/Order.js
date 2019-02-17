@@ -29,13 +29,11 @@ const styles = theme => ({
     minHeight: 220,
     minWidth: 220,
     position: 'relative',
-
-    // background: 'rgba(20,20,20,0.16)'
+    borderRadius: '20px 20px 20px 20px',
+    background: theme.gradient.primary
   },
   collecting: {
-    // background: theme.primary
-    backgroundImage: `linear-gradient(141deg, ${theme.palette.primary.light} 0%, ${theme.palette.background.default} 90%, ${theme.palette.primary.dark} 100%)`
-
+    background: theme.gradient.secondary
   },
   icon: {
     verticalAlign: 'middle',
@@ -49,8 +47,8 @@ const styles = theme => ({
   },
   chipPosition: {
     position: 'absolute',
-    right: -10,
-    top: -5,
+    right: 1,
+    top: 0,
     // zIndex: 10
   },
   restaurantName: {
