@@ -29,10 +29,13 @@ const styles = theme => ({
     minHeight: 220,
     minWidth: 220,
     position: 'relative',
+
     // background: 'rgba(20,20,20,0.16)'
   },
   collecting: {
     // background: theme.primary
+    backgroundImage: `linear-gradient(141deg, ${theme.palette.primary.light} 0%, ${theme.palette.background.default} 90%, ${theme.palette.primary.dark} 100%)`
+
   },
   icon: {
     verticalAlign: 'middle',
@@ -48,7 +51,7 @@ const styles = theme => ({
     position: 'absolute',
     right: -10,
     top: -5,
-    zIndex: 999
+    // zIndex: 10
   },
   restaurantName: {
     // position: 'relative',
