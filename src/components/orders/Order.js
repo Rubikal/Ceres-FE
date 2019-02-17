@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import { push } from 'connected-react-router';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Restaurant from '@material-ui/icons/Restaurant';
+import LinkIcon from '@material-ui/icons/Link';
 
 const styles = theme => ({
   root: {
@@ -19,6 +21,9 @@ const styles = theme => ({
     maxWidth: 700,
     marginTop: 20,
     marginBottom: 20
+  },
+  icon: {
+    verticalAlign: 'middle'
   },
   button: {
     margin: theme.spacing.unit,
@@ -47,7 +52,9 @@ class Order extends Component {
               <Grid item xs container direction="column" spacing={16}>
                 <Grid item xs>
                   <Typography gutterBottom variant="subtitle1">
-                    Restaurant: { order.restaurant }
+                     <Restaurant className={classes.icon} />
+                     {' '}
+                     { order.restaurant }
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -56,7 +63,11 @@ class Order extends Component {
                 {
                   order.menuUrl &&
                   <Grid item>
-                    <Typography>Menu: <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a></Typography>
+                    <Typography>
+                      <LinkIcon className={classes.icon} /> 
+                      {' '}
+                      <a target="_blank" href={order.menuUrl}>{order.menuUrl}</a>
+                    </Typography>
                   </Grid>
                 }
                 <Grid item>
