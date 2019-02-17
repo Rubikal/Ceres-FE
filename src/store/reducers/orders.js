@@ -16,6 +16,12 @@ const orders = (state = initialState, action) => {
       const { status } = action.payload;
       return state.setIn(['activeOrder', 'status'], status);
     
+    case ordersActionTypes.GET_ORDERS:
+      return state.set('activeOrders', 'loading');
+      
+    case ordersActionTypes.GET_OLD_ORDERS:
+      return state.set('oldOrders', 'loading');
+    
     case ordersActionTypes.INSERT_ORDERS:
       return state.set('activeOrders', action.payload);
 

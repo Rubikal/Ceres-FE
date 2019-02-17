@@ -9,6 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import NoOldOrder from './NoOldOrder';
 import { getOldOrders } from '../../store/action-creators/orders';
 import ActiveOrders from './ActiveOrders';
+import Loader from '../grid/Loader';
 
 const styles = theme => ({
   fab: {
@@ -38,7 +39,9 @@ export class OldOrders extends Component {
   renderActiveOrders() {
     const { oldOrders } = this.props;
 
-    if (oldOrders.length) {
+    if (oldOrders === 'loading') {
+      return <Loader />
+    } else if (oldOrders.length) {
       return <ActiveOrders orders={oldOrders} />
     } else {
       return <NoOldOrder />

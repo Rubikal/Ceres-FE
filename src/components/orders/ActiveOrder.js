@@ -9,6 +9,7 @@ import NoActiveOrder from './NoActiveOrder';
 import { getOrders } from '../../store/action-creators/orders';
 import ActiveOrders from './ActiveOrders';
 import { Typography } from '@material-ui/core';
+import Loader from '../grid/Loader';
 
 const styles = theme => ({
   fab: {
@@ -38,7 +39,9 @@ export class ActiveOrder extends Component {
   renderActiveOrders() {
     const { activeOrders } = this.props;
 
-    if (activeOrders.length) {
+    if(activeOrders === 'loading') {
+      return <Loader />
+    } else if (activeOrders.length) {
       return <ActiveOrders orders={activeOrders} />
     } else {
       return <NoActiveOrder />
