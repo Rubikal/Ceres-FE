@@ -8,7 +8,9 @@ import Card from '@material-ui/core/Card';
 import { push } from 'connected-react-router';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Restaurant from '@material-ui/icons/Restaurant';
+import Chip from '@material-ui/core/Chip';
+import Divider from '@material-ui/core/Divider';
+// import Restaurant from '@material-ui/icons/Restaurant';
 import LinkIcon from '@material-ui/icons/Link';
 import { formatOrderStatus } from '../../helpers/utils';
 
@@ -24,17 +26,41 @@ const styles = theme => ({
     marginBottom: 20,
     marginLeft: 10,
     marginRight: 10,
-    boxShadow: '8px 10px 12px rgba(0,0,0,0.16), 8px 10px 12px rgba(0,0,0,0.17)'
+    minHeight: 220,
+    minWidth: 220,
+    position: 'relative'
+    // background: 'rgba(20,20,20,0.16)'
   },
   collecting: {
-    boxShadow: '8px 10px 12px rgba(0,255,0,0.16), 8px 10px 12px rgba(0,255,0,0.17) '
+    // background: theme.primary
   },
   icon: {
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
+    fontSize: '1.3em'
   },
   button: {
     margin: theme.spacing.unit,
   },
+  chip: {
+    // margin: theme.spacing.unit,
+  },
+  chipPosition: {
+    position: 'absolute',
+    right: 5,
+    top: 5,
+    // zIndex: 10
+  },
+  restaurantName: {
+    // position: 'relative',
+    // zIndex: 20
+  },
+  divider: {
+    backgroundColor: theme.palette.primary.main,
+    height: 5,
+    borderRadius: '7px 7px 7px 7px',
+    marginLeft: 50,
+    marginRight: 50
+  }
 });
 
 class Order extends Component {
@@ -62,20 +88,29 @@ class Order extends Component {
           <Grid container spacing={16}>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={16}>
+              <div className={classes.chipPosition}>
+                  <Chip
+                    label={formatOrderStatus(order.status)}
+                    className={classes.chip}
+                    color = {
+                      `${order.status === 'collecting' ? 'primary' : order.status === 'settled' ? '': 'secondary'}`
+                    }
+                  />
+                </div>
                 <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                     <Restaurant className={classes.icon} />
-                     {' '}
+                  <Typography className={classes.restaurantName} gutterBottom variant="h4">
                      { order.restaurant }
                   </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography>Status: {formatOrderStatus(order.status)}</Typography>
+                  <Divider className={classes.divider} variant="middle" />
                 </Grid>
                 {
                   order.menuUrl &&
                   <Grid item>
-                    <Button color="secondary" onClick={this.handleMenuClick}>
+                    <Button 
+                      color={`${order.status === 'collecting' && 'primary'}`} 
+                      variant={`${order.status === 'collecting' ? 'contained' : 'outlined' }`} 
+                      onClick={this.handleMenuClick}
+                    >
                       Menu
                     </Button>
                   </Grid>
@@ -83,13 +118,23 @@ class Order extends Component {
                 <Grid item>
                   {
                     !view &&
-                    <Button onClick={this.handleViewOrder} variant="outlined" className={classes.button}>
+                    <Button 
+                      onClick={this.handleViewOrder} 
+                      color={`${order.status === 'collecting' && 'primary'}`} 
+                      variant={`${order.status === 'collecting' ? 'contained' : 'outlined' }`} 
+                      className={classes.button}
+                    >
                       View
                     </Button>
                   }
                   {
                     order.status === 'collecting' &&
-                    <Button onClick={this.handleSubmitItems} variant="contained" color="primary" className={classes.button}>
+                    <Button 
+                      onClick={this.handleSubmitItems} 
+                      variant="contained" 
+                      color="secondary" 
+                      className={classes.button}
+                    >
                       Submit Your Order
                     </Button>
                   }

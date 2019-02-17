@@ -9,7 +9,11 @@ const validateForm = (values) => {
   
 	if (!name) {
 		errors.name = 'Restaurant Name can\'t be empty';
-	}
+  } 
+  
+  if(name.length > 20) {
+    errors.name = 'Restaurant Name can\'t be longer than 20 characters';
+  }
 
 	if (Object.keys(errors).length > 0) {
     throw new SubmissionError(errors);
