@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import { push } from 'connected-react-router';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -16,12 +16,13 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
+  card: {
     padding: theme.spacing.unit * 2,
     margin: 'auto',
-    maxWidth: 700,
+    maxWidth: 500,
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.17)'
   },
   icon: {
     verticalAlign: 'middle'
@@ -47,7 +48,7 @@ class Order extends Component {
     const { classes, order, view } = this.props;
     return (
       <div className={classes.root}>
-        <Paper className={classes.paper}>
+        <Card className={classes.card}>
           <Grid container spacing={16}>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={16}>
@@ -88,7 +89,7 @@ class Order extends Component {
               </Grid>
             </Grid>
           </Grid>
-        </Paper>
+        </Card>
       </div>
     );
   }
