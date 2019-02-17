@@ -32,7 +32,7 @@ class Order extends Component {
     push(`/orders/${orderId}`);
   }
   render() {
-    const { classes, order } = this.props;
+    const { classes, order, view } = this.props;
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
@@ -52,8 +52,14 @@ class Order extends Component {
                 </Grid>
                 <Grid item>
                   {
-                    order.status === 'collecting' &&
+                    !view &&
                     <Button onClick={this.handleViewOrder} variant="contained" color="primary" className={classes.button}>
+                      View
+                    </Button>
+                  }
+                  {
+                    order.status === 'collecting' &&
+                    <Button onClick={this.handleViewOrder} variant="contained" color="secondary" className={classes.button}>
                       Submit Order
                     </Button>
                   }

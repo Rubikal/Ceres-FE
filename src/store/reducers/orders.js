@@ -6,6 +6,7 @@ const initialState = Map({
   activeOrder: Map({ // the currently selected active order
     status: null
   }),
+  selectedOrder: null,
 });
 
 const orders = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const orders = (state = initialState, action) => {
     case ordersActionTypes.INSERT_ORDERS:
       return state.set('activeOrders', action.payload);
 
+    case ordersActionTypes.SET_SELECTED_ORDER:
+      return state.set('selectedOrder', action.payload);
     default:
       return state;
   }

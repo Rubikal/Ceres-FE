@@ -27,3 +27,13 @@ export const insertOrders = payload => ({
   type: ordersActionTypes.INSERT_ORDERS,
   payload: payload
 });
+
+export const getOrder = orderId => ({
+  type: ordersActionTypes.GET_ORDER,
+  payload: orderId
+});
+
+export const setSelectedOrder = order => ({
+  type: ordersActionTypes.SET_SELECTED_ORDER,
+  payload: order
+})

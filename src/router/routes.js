@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import ActiveOrder from '../components/orders/ActiveOrder';
+import ViewOrder from '../components/orders/ViewOrder';
 import CreateOrder from '../components/orders/CreateOrder';
 import Login from '../components/users/Login';
 import OauthProgress from '../components/users/OauthProgress';
@@ -21,6 +22,11 @@ const routes = [
     title: 'Create new order',
     path: '/new-order',
     component: auth ? CreateOrder : Login
+  },
+  {
+    title: 'View Order',
+    path: '/orders/:orderId',
+    component: auth ? ViewOrder : Login
   },
   {
     title: 'Login in progress',

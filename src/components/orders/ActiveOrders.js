@@ -6,7 +6,7 @@ export default class ActiveOrders extends Component {
 
   renderOrders = () => {
     const { orders } = this.props;
-    return orders.map(order => <Order order={order} />);
+    return orders.map(order => <Order key={order.orderId} order={order} />);
   }
   render() {
     return (

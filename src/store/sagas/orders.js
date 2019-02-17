@@ -52,10 +52,24 @@ function* getOrders() {
   }
 }
 
+function* getOrder({payload: orderId}) {
+  try {
+    const { data: { data: order } } = yield get(`${getRootURL()}/orders/${orderId}`, {
+      headers: {
+        Authorization: yield select(getJWT)
+      },
+    });
+    yield put(ordersActionCreators.setSelectedOrder(order));
+  } catch {
+
+  }
+}
+
 export default function* orders() {
   yield all([
     takeLatest(ordersActionTypes.UPDATE_ORDER_STATUS, updateOrderStatus),
     takeLatest(ordersActionTypes.FORM_SUBMIT_SUCCEEDED, createNewOrder),
     takeLatest(ordersActionTypes.GET_ORDERS, getOrders),
+    takeLatest(ordersActionTypes.GET_ORDER, getOrder)
   ]);
 }
