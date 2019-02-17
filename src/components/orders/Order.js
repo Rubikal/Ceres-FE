@@ -22,6 +22,8 @@ const styles = theme => ({
     maxWidth: 500,
     marginTop: 20,
     marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
     boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.17)'
   },
   icon: {
@@ -47,7 +49,7 @@ class Order extends Component {
   render() {
     const { classes, order, view } = this.props;
     return (
-      <div className={classes.root}>
+      <Grid lg={3} className={classes.root}>
         <Card className={classes.card}>
           <Grid container spacing={16}>
             <Grid item xs={12} sm container>
@@ -90,7 +92,7 @@ class Order extends Component {
             </Grid>
           </Grid>
         </Card>
-      </div>
+      </Grid>
     );
   }
 }

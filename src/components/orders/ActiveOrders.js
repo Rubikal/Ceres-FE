@@ -10,9 +10,9 @@ export default class ActiveOrders extends Component {
   }
   render() {
     return (
-      <div>
+      <Grid container lg={12}>
         { this.renderOrders() }
-      </div>
+      </Grid>
     )
   }
 }
