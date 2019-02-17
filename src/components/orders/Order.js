@@ -24,7 +24,10 @@ const styles = theme => ({
     marginBottom: 20,
     marginLeft: 10,
     marginRight: 10,
-    boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.17)'
+    boxShadow: '8px 10px 12px rgba(0,0,0,0.16), 8px 10px 12px rgba(0,0,0,0.17)'
+  },
+  collecting: {
+    boxShadow: '8px 10px 12px rgba(0,255,0,0.16), 8px 10px 12px rgba(0,255,0,0.17) '
   },
   icon: {
     verticalAlign: 'middle'
@@ -55,7 +58,7 @@ class Order extends Component {
     const { classes, order, view } = this.props;
     return (
       <Grid lg={3} className={classes.root}>
-        <Card className={classes.card}>
+        <Card className={`${classes.card} ${order.status === 'collecting' && classes.collecting}`}>
           <Grid container spacing={16}>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={16}>
