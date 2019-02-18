@@ -99,7 +99,7 @@ class Order extends Component {
                     label={formatOrderStatus(order.status)}
                     className={classes.chip}
                     color = {
-                      `${order.status === 'collecting' ? 'primary' : order.status === 'settled' ? '': 'secondary'}`
+                      `${order.status === 'collecting' ? 'primary' : order.status === 'settled' || order.status === 'cancelled' ? '': 'secondary'}`
                     }
                   />
                 </div>
