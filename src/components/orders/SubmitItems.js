@@ -31,6 +31,16 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
       fieldName = 'url';
       break;
 
+    case 'item':
+      text = 'Item';
+      fieldName = 'item';
+      break;
+
+    case 'fallback':
+    text = 'Fallback';
+    fieldName = 'fallback';
+    break;
+
 		default:
 			text = '';
 			fieldName = '';
@@ -55,14 +65,12 @@ const SubmitItems = ({ handleSubmit, errors, formHasErrors }) => (
     <div className="register-form">
       <div>
         <Field
-          name="name"
+          name="item"
           type="text"
           component={renderInputComponent}
         />
-      </div>
-      <div>
         <Field
-        name="url"
+        name="fallback"
         type="text"
         component={renderInputComponent}
         />

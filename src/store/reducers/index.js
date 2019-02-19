@@ -8,6 +8,7 @@ import { reducer } from 'redux-form/immutable';
 
 import orders from './orders';
 import orderForm from './orderForm';
+import submitItemsForm from './submitItems';
 import users from './users';
 import sidebar from './sidebar';
 
@@ -16,7 +17,8 @@ const rootReducer = history => combineReducers({
   form: reducer,
   orders: combineReducers({
     userOrders: orders,
-    orderForm
+    orderForm,
+    submitItemsForm
   }),
   ui: combineReducers({
     sidebar
