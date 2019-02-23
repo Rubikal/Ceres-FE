@@ -99,7 +99,7 @@ class Order extends Component {
                     label={formatOrderStatus(order.status)}
                     className={classes.chip}
                     color = {
-                      `${order.status === 'collecting' ? 'primary' : order.status === 'settled' || order.status === 'cancelled' ? '': 'secondary'}`
+                      `${order.status === 'collecting' ? 'primary' : order.status === 'settled' || order.status === 'cancelled' ? 'default': 'secondary'}`
                     }
                   />
                 </div>
@@ -113,7 +113,7 @@ class Order extends Component {
                   order.menuUrl &&
                   <Grid item>
                     <Button 
-                      color={`${order.status === 'collecting' && 'primary'}`} 
+                      color={`${order.status === 'collecting' ? 'primary' : 'default' }`} 
                       variant={`${order.status === 'collecting' ? 'contained' : 'outlined' }`} 
                       onClick={this.handleMenuClick}
                     >
@@ -126,7 +126,7 @@ class Order extends Component {
                     !view &&
                     <Button 
                       onClick={this.handleViewOrder} 
-                      color={`${order.status === 'collecting' && 'primary'}`} 
+                      color={`${order.status === 'collecting' ? 'primary' : 'default' }`} 
                       variant={`${order.status === 'collecting' ? 'contained' : 'outlined' }`} 
                       className={classes.button}
                     >

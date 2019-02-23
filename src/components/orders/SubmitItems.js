@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset } from 'redux-form/immutable';
+import { FieldArray, Field, reduxForm, reset } from 'redux-form/immutable';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../forms/input';
 import {
@@ -20,7 +20,7 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
 	let text;
 	let fieldName;
 
-	switch (name) {
+	switch (name.split('-')[1]) {
 		case 'name':
 			text = 'Restaurant Name';
 			fieldName = 'item';
@@ -56,6 +56,48 @@ const renderInputComponent = ({ input: { name, onChange, value } }) => {
 	);
 };
 
+const renderFieldArray = ({ fields }) => {
+  if (!fields.length) {
+    fields.push({});
+  }
+  return (
+    <div>
+    <Button 
+        onClick={() => fields.push({})}
+      >
+        Add More Items
+      </Button>
+      {fields.map((item, index) =>
+        (
+        <div key={index}>
+          <Typography variant="h6">
+            Item #{index}
+          </Typography>
+          <Field
+            name={`${item}-item`}
+            type="text"
+            component={renderInputComponent}
+            label="Item"
+          />
+          <Field
+            name={`${item}-fallback`}
+            type="text"
+            component={renderInputComponent}
+            label="Fallback"
+          />
+          <Button
+            title="Remove Item"
+            onClick={() => fields.remove(index)}
+          >
+            Remove Item
+          </Button>
+        </div>
+        )
+      )}
+    </div>
+  );
+}
+
 const SubmitItems = ({ handleSubmit, errors, formHasErrors }) => (
   <React.Fragment>
   <Typography variant="h5" style={{marginBottom: 20, marginTop: 30}}>
@@ -64,16 +106,7 @@ const SubmitItems = ({ handleSubmit, errors, formHasErrors }) => (
 	<form onSubmit={handleSubmit(validateForm)}>
     <div className="register-form">
       <div>
-        <Field
-          name="item"
-          type="text"
-          component={renderInputComponent}
-        />
-        <Field
-        name="fallback"
-        type="text"
-        component={renderInputComponent}
-        />
+        <FieldArray name="items" component={renderFieldArray}/>
       </div>
       <div style={{ marginTop: 20 }}>
         <Button variant="contained" color="primary" type="submit">
