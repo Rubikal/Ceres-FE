@@ -2,8 +2,8 @@ import { Map, List } from 'immutable';
 import * as ordersActionTypes from '../action-types/orders';
 
 const initialState = Map({
-  activeOrders: List(), // a list of all the active orders
-  activeOrder: Map({ // the currently selected active order
+  activeOrders: List(),
+  activeOrder: Map({
     status: null
   }),
   selectedOrder: null,

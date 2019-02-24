@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FieldArray, Field, reduxForm, reset } from 'redux-form/immutable';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../forms/input';
 import {
@@ -61,40 +62,55 @@ const renderFieldArray = ({ fields }) => {
     fields.push({});
   }
   return (
-    <div>
-    <Button 
-        onClick={() => fields.push({})}
-      >
-        Add More Items
-      </Button>
+    <Grid lg={12}>
       {fields.map((item, index) =>
         (
-        <div key={index}>
+        <Grid lg={12} key={index}>
           <Typography variant="h6">
-            Item #{index}
+            Item #{index + 1}
           </Typography>
-          <Field
-            name={`${item}-item`}
-            type="text"
-            component={renderInputComponent}
-            label="Item"
-          />
-          <Field
-            name={`${item}-fallback`}
-            type="text"
-            component={renderInputComponent}
-            label="Fallback"
-          />
-          <Button
-            title="Remove Item"
-            onClick={() => fields.remove(index)}
-          >
-            Remove Item
-          </Button>
-        </div>
+          <Grid>
+            <Field
+              name={`${item}-item`}
+              type="text"
+              component={renderInputComponent}
+              label="Item"
+            />
+          </Grid>
+          <Grid>
+            <Field
+              name={`${item}-fallback`}
+              type="text"
+              component={renderInputComponent}
+              label="Fallback"
+            />
+          </Grid>
+          <Grid>
+          {
+            fields.length > 1 &&
+            <Button
+              title="Remove Item"
+              variant="contained"
+              color="secondary"
+              onClick={() => fields.remove(index)}
+            >
+              Remove Item
+            </Button>
+          }
+          </Grid>
+          <Grid lg={12}>
+            <Button 
+              onClick={() => fields.push({})}
+              variant="contained"
+              color="primary"
+            >
+              Add More Items
+            </Button>
+          </Grid>
+        </Grid>
         )
       )}
-    </div>
+    </Grid>
   );
 }
 
@@ -105,9 +121,9 @@ const SubmitItems = ({ handleSubmit, errors, formHasErrors }) => (
   </Typography>
 	<form onSubmit={handleSubmit(validateForm)}>
     <div className="register-form">
-      <div>
+      <Grid container>
         <FieldArray name="items" component={renderFieldArray}/>
-      </div>
+      </Grid>
       <div style={{ marginTop: 20 }}>
         <Button variant="contained" color="primary" type="submit">
           Submit
