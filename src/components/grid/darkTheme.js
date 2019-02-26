@@ -6,7 +6,7 @@ export const darkTheme = {
     useNextVariants: true,
   },
   gradient: {
-    primary: 'linear-gradient(to top, #141e30, #243b55)',
-    secondary: 'linear-gradient(to top, #16222a, #3a6073)'
+    // primary: '',
+    secondary: 'linear-gradient(to top, #141e30, #243b55)'
   }
 };
